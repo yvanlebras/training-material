@@ -8,21 +8,21 @@ logo: "GTN"
 
 ---
 
-### RNA sequencing
+## RNA sequencing
 
-RNA 
+**RNA** 
 
 - Transcribed form of the DNA 
 - Active state of the DNA
 
-RNA sequencing 
+**RNA sequencing** 
 
 - RNA quantification at single base resolution
 - Cost efficient analysis of the whole transcriptome in a high-throughput manner
 
 ---
 
-### Where does my data come from?
+## Where does my data come from?
 
 ![](../images/RNA_seq_zang2016.png)
 
@@ -52,44 +52,87 @@ RNA sequencing
 
 ---
 
-### FASTQ-files
+## Two main research applications for RNA-Seq
 
-```bash
-@4:1:4888:1039:Y 
-TGAACGCTGTTTCCAAGAAATGCTGGAAGAGGTCGATGGGTGTTATCTCTG
-+ 
-IIIHIIIIIIIIIIIIIIIIIIIIIIIIIH!CBCBBBB@=B@A?1@==<@=
-```
-                            
-- 50+ million reads per data set (~15 GB data for one human fastq-file)
-- Unique identifier per read
-- Nucleotide sequence with single base resolution
-- Quality score for each base
+**Transcript discovery**
 
----
+> *Which RNA molecules are in my sample?*
 
-### 2 main research applications for RNA-Seq
+- Novel isoforms and alternative splicing 
+- Non-coding RNAs
+- Single nucleotide variations
+- Fusion genes
 
-- Transcript discovery
+**RNA quantification**
 
-    > *Which RNA molecules are in my sample?*
+> *What is the concentration of RNAs?*
 
-    - Novel isoforms and alternative splicing 
-    - Non-coding RNAs
-    - Single nucleotide variations
-    - Fusion genes
-
-- RNA quantification
-
-    > *What is the concentration of RNAs?*
-
-    - Absolute gene expression (within sample)
-    - Differential gene expression (between biological samples)
-    - Isoform expression / differential exon usage / alternative splicing
+- Absolute gene expression (within sample)
+- Differential gene expression (between biological samples)
+- Isoform expression / differential exon usage / alternative splicing
 
 ---
 
-## How to analyze RNA seq data for RNA quantification?
+# Experimental aspects of RNA-seq
+
+---
+
+## poly-dT priming versus random priming
+
+---
+
+<small>Reverse Transcriptase (RT) requires a primer. One can leverage the fact that the majority of processed mRNAs are polyadenylated and use oligo-dT primer to (mostly) restrict cDNA synthesis to fully processed mRNAs. Alternatively one can use a mix of random oligonucleotides to prime RT at a multitude of internal sites irrespective of RNA type and maturation status:</small>
+
+
+>![](../images/dT_random.png)
+>**Oligo-dT (A) vs. random priming (B)**<br>
+
+
+<small>Depending on the choice of the approach one would have different types of RNAs included in the final sequencing outcome. For example, if one attempts to study RNAs that are not polyadenylated or not fully processed, it would be unwise to use oligo-dT priming approach. </small>
+
+---
+
+## Strandedness of RNA experiments
+
+<small>During a typical RNAseq experiment the information about strandedness is lost after both strands of cDNA are synthesized, size selected, and converted into sequencing library. However, this information can be quite useful for various aspects of RNAseq analysis such as transcript reconstruction and quantification.</small>
+
+---
+
+<small>RNAs that are typically targeted in RNAseq experiments are single stranded (e.g., mRNAs) and thus have polarity (5' and 3' ends that are functionally distinct):</small>
+
+>![](../images/dna_rna.png)
+>**Relationship between DNA and RNA orientation**
+
+---
+
+[![](../images/stranded_protocols.png)](http://www.nature.com/nmeth/journal/v7/n9/fig_tab/nmeth.1491_F1.html)
+
+**Generation of stranded RNAseq libraries** (from [Levin:2010](http://www.nature.com/nmeth/journal/v7/n9/full/nmeth.1491.html))
+
+---
+
+<small>In the previous illustration, you could see that for example dUTP method is to only sequence the strand from the first strand synthesis (the original RNA strand is degradated due to the dUTP incorporated).
+
+
+Protocol | Description | Library Type (HISAT2)
+--- | --- | ---
+Standard Illumina | Reads from the left-most end of the fragment (in transcript coordinates) map to the transcript strand, and the right-most end maps to the opposite strand | Unstranded (default)
+dUTP, NSR, NNSR | Same as above except we enforce the rule that the right-most end of the fragment (in transcript coordinates) is the first sequenced (or only sequenced for single-end reads). Equivalently, it is assumed that only the strand generated during first strand synthesis is sequenced. | First strand (FR/F)
+Ligation, Standard SOLiD | Same as above except we enforce the rule that the left-most end of the fragment (in transcript coordinates) is the first sequenced (or only sequenced for single-end reads). Equivalently, it is assumed that only the strand generated during second strand synthesis is sequenced. | Second strand (RF/R)
+
+</small>
+---
+
+<small>The implication of stranded RNAseq is that you can distinguish whether the reads are derived from forward- or reverse-encoded transcripts:</small>
+
+![](../images/stranded_result.png)<br>
+**Stranded RNAseq data look like this**
+
+<small>This example contrasts unstranded and stranded RNAseq experiments. <font color="red">Red transcripts</font> are from + strand and <font color="blue">blue</font> are from - strand. In stranded example reads are clearly stratified between the two strands.  A small number of reads from opposite strand may represent anti-sense transcription. The image from GATC Biotech.</small>
+
+---
+
+# How to analyze RNA seq data for RNA quantification?
 
 ---
 

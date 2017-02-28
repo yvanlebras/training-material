@@ -2,10 +2,12 @@
 @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
 @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
-body { font-family: 'Droid Serif'; }
+body { font-family: -apple-system, BlinkMacSystemFont,
+    "Ubuntu", "Segoe UI", "Roboto", "Oxygen",
+    "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif; }
 
 h1, h2, h3 {
-    font-family: 'Yanone Kaffeesatz';
     font-weight: normal;
     text-align: center;
 }
