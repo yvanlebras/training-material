@@ -1,4 +1,4 @@
-extends base.pug
+extends layout.pug
 
 block content
   
@@ -101,10 +101,10 @@ block content
           each maintainer in maintainers
               li
                 if maintainer.github_username != ""
-                  a( href="https://github.com/" + maintainer.github_username) #{ maintainer.name }
+                  a( href="https://github.com/" + maintainer.github_username) #{ maintainer.name } 
                 else
-                  #{ maintainer.name }
-              if maintainer.email != ""
+                  #{ maintainer.name } 
+                if maintainer.email != ""
                   | (
                   a( href="mailto:" + maintainer.email ) #{ maintainer.email }
                   | )
@@ -118,9 +118,9 @@ block content
           each contributor in contributors
               li
                 if contributor.github_username != ""
-                  a( href="https://github.com/" + contributor.github_username) #{ contributor.name }
+                  a( href="https://github.com/" + contributor.github_username) #{ contributor.name } 
                 else
-                  #{ contributor.name }
+                  #{ contributor.name } 
                 if contributor.email != ""
                   | (
                   a( href="mailto:" + contributor.email ) #{ contributor.email }
@@ -132,9 +132,8 @@ block content
 
           each reference in references
               p
-                span( class="bold") #{ reference.authors + ":" }
+                span.bold #{ reference.authors + " : " } 
                 a( href= reference.link ) #{ reference.title }
-
               if reference.summary != ""
                 br
                 cite #{ reference.summary }
