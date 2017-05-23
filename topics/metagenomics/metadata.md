@@ -1,7 +1,7 @@
+---
 name: "Metagenomics"
 type: "use"
 title: "Metagenomics"
-summary: "Metagenomics is a discipline that enables the genomic study of uncultured microorganisms"
 
 requirements:
 -
@@ -70,3 +70,6 @@ references:
     title: "Secondary structure improves OTU assignments of 16S rRNA gene sequences."
     link: "https://doi.org/10.1038/ismej.2012.102"
     summary: ""
+---
+
+Metagenomics is a discipline that enables the genomic study of uncultured microorganisms
