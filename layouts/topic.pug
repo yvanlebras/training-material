@@ -1,0 +1,140 @@
+extends base.pug
+
+block content
+  
+  section
+      h1 #{ title }
+
+      p #{ summary }
+
+      if requirements
+          a( name="requirements" )
+          h2 Requirements
+
+          p Before diving into this topic, we recommend you to have a look at:
+
+          ul
+              each requirement in requirements
+                  li
+                      if requirement.type == "internal"
+                        a( href= site.url + requirement.link ) #{ requirement.title }
+                      else if material.type == "external"
+                        a( href= requirement.link  ) #{ requirement.title }
+
+      a( name="material")
+      h2 Material
+
+      table.table.table-striped
+        tr
+          td.bold Lesson
+          td.bold Hands-on
+          td.bold Slides
+
+          if type != "admin-dev"
+            td.bold Input dataset
+            td.bold Galaxy tour
+
+          each tutorial in tutorials
+              tr
+                  td #{ tutorial.title }
+
+                  if tutorial.type == "introduction"
+                      td
+                      td
+                          if tutorial.slides == "yes"
+                            a( href= site.url + "/" + page.url + "/slides" ) :mortar_board: 
+                      if type != "admin-dev"
+                        td
+                        td 
+
+                  else if type == "tutorial"
+                      td
+                          if tutorial.hands_on == "external"
+                            a( href= material.hands_on_url ) :link:
+                          else if tutorial.hands_on == "yes"
+                            a( href=  site.url + page.url + "tutorials/" + tutorial.name ) :book:
+                          else if tutorial.hands_on == "github"
+                            a( href= site.github_repository + "/tree/master/" + name + "/tutorials/" + tutorial.name + ".md") :book:
+
+                      td
+                          if tutorial.slides == "yes"
+                            a( href= site.url + page.url + "slides/" + tutorial.name) :mortar_board:
+
+                      if type != "admin-dev"
+                          td
+                              if tutorial.zenodo_link != ""
+                                a( href= tutorial.zenodo_link ) :open_file_folder:
+                          td
+                              if tutorial.galaxy_tour != "" 
+                                a( href="https://github.com/galaxyproject/galaxy-tours" ) :eyes:
+
+      if docker_image != ""
+          a( name="docker_image")
+          h2 Galaxy instance
+
+          p For these tutorials, you can use the dedicated Docker image:
+
+          pre
+            code
+              | docker run -d -p 8080:80 
+              #{ docker_image }
+
+          p 
+            It will launch a flavored Galaxy instance available on 
+            a( href="http://localhost:8080") http://localhost:8080
+            | .
+
+      if galaxy_instance
+          h2 Galaxy instance
+
+          p 
+            For these tutorials, use Galaxy instance at
+            a( href= galaxy_instance) #{ galaxy_instance }
+            | .
+
+      a( name="contributors")
+      h2 Contributors
+
+      p This material is maintained by:
+
+      ul
+          each maintainer in maintainers
+              li
+                if maintainer.github_username != ""
+                  a( href="https://github.com/" + maintainer.github_username) #{ maintainer.name }
+                else
+                  #{ maintainer.name }
+              if maintainer.email != ""
+                  | (
+                  a( href="mailto:" + maintainer.email ) #{ maintainer.email }
+                  | )
+
+      p
+        em For any question related to this topic and the content, you can contact them.
+
+      p The following persons have contributed to this training material:
+
+      ul
+          each contributor in contributors
+              li
+                if contributor.github_username != ""
+                  a( href="https://github.com/" + contributor.github_username) #{ contributor.name }
+                else
+                  #{ contributor.name }
+                if contributor.email != ""
+                  | (
+                  a( href="mailto:" + contributor.email ) #{ contributor.email }
+                  | )
+
+      if references
+          a( name="references")
+          h2 References
+
+          each reference in references
+              p
+                span( class="bold") #{ reference.authors + ":" }
+                a( href= reference.link ) #{ reference.title }
+
+              if reference.summary != ""
+                br
+                cite #{ reference.summary }

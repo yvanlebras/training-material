@@ -7,14 +7,14 @@ set_metadata_defaults = (files, metalsmith, done) ->
         # Autotoc defaults to true
         # Set domain templates
         if 'topics' in v.collection
-            files[k].layout = 'home.pug' if files[k].layout == undefined
+            files[k].layout = 'topic.pug' if files[k].layout == undefined
             files[k].autotoc = false if files[k].autotoc == undefined
             files[k].material = []
         else if 'tutorials' in v.collection
             files[k].layout = 'default.pug' if files[k].layout == undefined
             files[k].autotoc = false if files[k].autotoc == undefined
         else if 'slides' in v.collection
-            files[k].layout = 'slides.pug' if files[k].layout == undefined
+            files[k].layout = 'tutorial_slides.pug' if files[k].layout == undefined
             files[k].autotoc = false if files[k].autotoc == undefined
         else
             files[k].autotoc = true if files[k].autotoc == undefined
