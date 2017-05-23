@@ -24,7 +24,7 @@ block content
                           - tutorial_number = tutorial_number + 1
 
                   td( class="col-md-10") 
-                      a( href= topic.name ) #{topic.title}
+                      a( href= helpers._.toLower(topic.name) ) #{topic.title}
                   td( class="col-md-2" ) #{tutorial_number}
 
     h2 Galaxy for Developers and Admins
