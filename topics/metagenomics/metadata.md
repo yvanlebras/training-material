@@ -1,5 +1,4 @@
 ---
-name: "Metagenomics"
 type: "use"
 title: "Metagenomics"
 
@@ -36,12 +35,12 @@ references:
     link: "http://dx.doi.org/10.1371/journal.pcbi.1000667"
     summary: ""
 -
-    authors: "Kozich JJ, Westcott SL, Baxter NT, Highlander SK, Schloss PD."
+    authors: "Kozich JJ, Westcott SL, Baxter NT, Highlander SK, Schloss PD"
     title: "Development of a dual-index sequencing strategy and curation pipeline for analyzing amplicon sequence data on the MiSeq Illumina sequencing platform. Applied and Environmental Microbiology"
     link: "http://www.schlosslab.org/assets/pdf/2013_kozich.pdf"
     summary: ""
 -
-    authors: "Robert C. Edgar, Brian J. Haas, Jose C. Clemente, Christopher Quince, Rob Knight."
+    authors: "Robert C. Edgar, Brian J. Haas, Jose C. Clemente, Christopher Quince, Rob Knight"
     title: "UCHIME improves sensitivity and speed of chimera detection"
     link: "https://doi.org/10.1093/bioinformatics/btr381"
     summary: ""
@@ -56,7 +55,7 @@ references:
     link: "https://doi.org/10.1186/1471-2105-12-385"
     summary: ""
 -
-    authors: "Finotello F, Mastrorilli E, Di Camillo B."
+    authors: "Finotello F, Mastrorilli E, Di Camillo B"
     title: "Measuring the diversity of the human microbiota with targeted next-generation sequencing."
     link: "https://doi.org/10.1093/bib/bbw119"
     summary: ""
