@@ -6,17 +6,22 @@ set_metadata_defaults = (files, metalsmith, done) ->
     for k, v of files
         # Autotoc defaults to true
         # Set domain templates
-        if 'topic' in v.collection
+        if 'topics' in v.collection
             files[k].layout = 'home.pug' if files[k].layout == undefined
             files[k].autotoc = false if files[k].autotoc == undefined
+            files[k].material = []
         else if 'tutorials' in v.collection
             files[k].layout = 'default.pug' if files[k].layout == undefined
             files[k].autotoc = false if files[k].autotoc == undefined
         else if 'slides' in v.collection
-            files[k].layout = 'default.pug' if files[k].layout == undefined
+            files[k].layout = 'slides.pug' if files[k].layout == undefined
             files[k].autotoc = false if files[k].autotoc == undefined
         else
             files[k].autotoc = true if files[k].autotoc == undefined
+    # console.log(metalsmith._metadata.collections)
+    # for topic in metalsmith._metadata.collections.topics
+    #    console.log(topic)
+    # for topic in metalsmith.collections
     done()
 
 # Extend `marked.Renderer` to increase all heading levels by 1 since we reserve
@@ -50,13 +55,13 @@ ms = metalsmith(__dirname)
     .use timer 'metalsmith-metadata'
     .use require('metalsmith-collections')
         topics:
-            pattern: "*/metadata.yaml"
+            pattern: "*/metadata.md"
         tutorials:
             pattern: "*/tutorials/*/tutorial.md"
-        tutorials:
-            pattern: "*/tutorials/*/slides/slides.html" # Move to .md?
-        slides:
-            pattern: "*/slides/index.html" #Move to .md?
+        tutorial_slides:
+            pattern: "*/tutorials/*/slides/slides.md"
+        topic_slides:
+            pattern: "*/slides/index.md"
     .use set_metadata_defaults
     .use timer 'set_metadata_defaults'
     .use timer 'metalsmith-collections'
