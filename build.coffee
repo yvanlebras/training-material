@@ -1,5 +1,6 @@
 # Build with Metalsmith
 metalsmith = require('metalsmith')
+path = require("path")
 
 set_metadata_defaults = (files, metalsmith, done) ->
     # Simple way to apply metadata defaults
@@ -9,19 +10,32 @@ set_metadata_defaults = (files, metalsmith, done) ->
         if 'topics' in v.collection
             files[k].layout = 'topic.pug' if files[k].layout == undefined
             files[k].autotoc = false if files[k].autotoc == undefined
-            files[k].material = []
+            files[k].tutorials = []
+            files[k].slides = []
         else if 'tutorials' in v.collection
             files[k].layout = 'default.pug' if files[k].layout == undefined
             files[k].autotoc = false if files[k].autotoc == undefined
+            # Add parent/child links for topic
+            parent_topic = k.split('/')[0]
+            if files[path.join(parent_topic, 'metadata.md')]
+                files[k].parent_topic = files[path.join(parent_topic, 'metadata.md')]
+                # This is hacky, consolidate logic eventually
+                files[path.join(parent_topic, 'metadata.md')].tutorials = files[path.join(parent_topic, 'metadata.md')].slides || []
+                files[path.join(parent_topic, 'metadata.md')].tutorials.push(files[k])
+        else if 'topic_slides' in v.collection
+            files[k].layout = 'introduction_slides.pug' if files[k].layout == undefined
+            files[k].autotoc = false if files[k].autotoc == undefined
+            # Add parent/child links for topic
+            parent_topic = k.split('/')[0]
+            if files[path.join(parent_topic, 'metadata.md')]
+                files[k].parent_topic = files[path.join(parent_topic, 'metadata.md')]
+                files[path.join(parent_topic, 'metadata.md')].slides = files[path.join(parent_topic, 'metadata.md')].slides || []
+                files[path.join(parent_topic, 'metadata.md')].slides.push(files[k])
         else if 'slides' in v.collection
-            files[k].layout = 'tutorial_slides.pug' if files[k].layout == undefined
+            files[k].layout = 'introduction_slides.pug' if files[k].layout == undefined
             files[k].autotoc = false if files[k].autotoc == undefined
         else
             files[k].autotoc = true if files[k].autotoc == undefined
-    # console.log(metalsmith._metadata.collections)
-    # for topic in metalsmith._metadata.collections.topics
-    #    console.log(topic)
-    # for topic in metalsmith.collections
     done()
 
 # Extend `marked.Renderer` to increase all heading levels by 1 since we reserve
