@@ -1,0 +1,17 @@
+extends base_slides
+
+block content
+
+  | ## Tutorials
+
+  each tutorial in tutorials
+      if tutorial.type == "tutorial"
+          if tutorial.hands_on == "yes"
+            | - 
+            a( href= site.url + "/" + topic_name + "/tutorials/" + tutorial.name  )   #{ tutorial.title }
+          else if tutorial.hands_on == "github"
+            | - 
+            a( href= site.github_repository + "/tree/master/" + topic_name + "/tutorials/" + tutorial.name  + ".md"  ) #{ tutorial.title }
+          else if tutorial.slides == "yes"
+            | - 
+            a( href= site.url + "/" + topic_name + "/slides/" + tutorial.name  ) #{ tutorial.title }
