@@ -18,14 +18,9 @@ block content
         each topic in topics
             if topic.type == "use"
               tr( class="row" )
-                  - var tutorial_number = 0
-                  each tuto in tutorials
-                      if tuto.topic_name == topic.name
-                          - tutorial_number = tutorial_number + 1
-
                   td( class="col-md-10") 
-                      a( href= helpers._.toLower(topic.name) ) #{topic.title}
-                  td( class="col-md-2" ) #{tutorial_number}
+                      a( href= helpers._.toLower(topic.title) ) #{topic.title}
+                  td( class="col-md-2" ) !{ topic.tutorials.length }
 
     h2 Galaxy for Developers and Admins
 

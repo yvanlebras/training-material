@@ -20,7 +20,7 @@ set_metadata_defaults = (files, metalsmith, done) ->
             if files[path.join(parent_topic, 'metadata.md')]
                 files[k].parent_topic = files[path.join(parent_topic, 'metadata.md')]
                 # This is hacky, consolidate logic eventually
-                files[path.join(parent_topic, 'metadata.md')].tutorials = files[path.join(parent_topic, 'metadata.md')].slides || []
+                files[path.join(parent_topic, 'metadata.md')].tutorials = files[path.join(parent_topic, 'metadata.md')].tutorials || []
                 files[path.join(parent_topic, 'metadata.md')].tutorials.push(files[k])
         else if 'topic_slides' in v.collection
             files[k].layout = 'introduction_slides.pug' if files[k].layout == undefined

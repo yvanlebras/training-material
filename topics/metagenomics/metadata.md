@@ -1,6 +1,6 @@
 ---
-type: "use"
 title: "Metagenomics"
+type: "use"
 
 requirements:
 -
