@@ -7,13 +7,11 @@ html
     if tuto.name == page.tutorial_name
       - var title = tuto.title
 
-- var title = topic_name
-
 head
 
     meta( charset="utf-8" )
     block title
-      title = #{ title }
+      title = #{ parent_topic.title }
     link( rel="stylesheet" href= site.url + "/css/slides.css" )
     link( rel="stylesheet" href= site.url + "/css/font-awesome.css" id="theme" )
 
@@ -30,17 +28,23 @@ body
                 img( src= site.url + site.logo style="height: 40px;")
             else
                 img( src= logo style="height: 40px;" )
-
+      |
+      | ---
+      |      
+      |
       | ##  Welcome!
-
-      This material is the result of a collaborative work. 
+      |
+      
+      | This material is the result of a collaborative work. 
       br
-      Thanks to 
+      | Thanks to 
       a( href = site.url + "/" + name + "#contributors" ) all the contributors 
-      and the 
+      | and the 
       a( href = "https://wiki.galaxyproject.org/Teach/GTN" ) Galaxy Training Network 
       | !
-
+      br
+      br
+        
       if logo == "GTN"
           img( src= site.url + site.logo style="height: 100px;" )
       else
@@ -49,8 +53,9 @@ body
       |
       | ---
       |
-      | # 
-      #{ title }
+      
+      h1 #{ parent_topic.title }
+      
       |
       | ---
       |
@@ -79,9 +84,11 @@ body
       |
       | ---
       |
+      
       block content
         #{ content }
-
+              
+      |
       | .footnote[Found a typo? Something is wrong in this tutorial?
       br
       | Edit it on 
@@ -89,6 +96,6 @@ body
       | ]
 
     script( src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript")
-    script( type="text/javascript" )
+    script( type="text/javascript" ).
       var slideshow = remark.create({navigation: {scroll: false,}});
       var hljs = remark.highlighter.engine;
