@@ -19,13 +19,9 @@ block content
             if topic.type == "use"
               tr( class="row" )
                   - var tutorial_number = 0
-                  - var introduction = 0
-                  each tuto in topic.material
-                      if tuto.type == "tutorial"
-                        tutorial_number = tutorial_number + 1
-                      else if tuto.type == "introduction"
-                        introduction=introduction + 1
-
+                  each tuto in tutorials
+                      if tuto.topic_name == topic.name
+                          - tutorial_number = tutorial_number + 1
 
                   td( class="col-md-10") 
                       a( href= topic.name ) #{topic.title}
@@ -42,12 +38,9 @@ block content
             if topic.type == "admin-dev"
               tr( class="row" )
                   - var tutorial_number = 0
-                  - var introduction = 0
-                  each tuto in topic.material
-                      if tuto.type == "tutorial"
-                        tutorial_number = tutorial_number + 1
-                      if tuto.type == "introduction"
-                        introduction = introduction + 1
+                  each tuto in tutorials
+                      if tuto.topic_name == topic.name
+                          - tutorial_number = tutorial_number + 1
 
                   td( class="col-md-10" ) a( href= site.url + "/" + topic.name ) topic.title
                   td( class="col-md-2" ) tutorial_number
