@@ -42,10 +42,13 @@ set_metadata_defaults = (files, metalsmith, done) ->
     done()
 
 file_staging = (files, metalsmith, done) ->
+    # We want to use metadata.md (which turns into metadata.html after
+    # processing) as the topic index.
     for k, v of files
-        if 'topics' in collection
-            files[k.replace('metadata.md', 'index.html')] = files[k]
+        if 'topics' in v.collection
+            files[k.replace('metadata.html', 'index.html')] = files[k]
             delete files[k]
+    done()
 
 # Extend `marked.Renderer` to increase all heading levels by 1 since we reserve
 # h1 for the page title. Will be passed to `metalsmith-markdown` plugin.
@@ -111,12 +114,12 @@ ms = metalsmith(__dirname)
             marked: require('marked')
             _: require('lodash')
     .use timer 'metalsmith-layouts'
+    .use file_staging
+    .use timer 'file staging'
     .use require('metalsmith-assets')
         source: 'assets'
         destination: ''
     .use timer 'metalsmith-assets'
-    .use require('metalsmith-less')()
-    .use timer 'metalsmith-less'
 
 argv = require('minimist')(process.argv.slice(2))
 
