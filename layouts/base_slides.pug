@@ -60,20 +60,19 @@ body
         block title
           | placeholder
 
-      |
-      | ---
-      |
-      
-      | ## Requirements
-
-      | Before diving into this slide deck, we recommend you to have a look at:
-      
-      
       - var topic = topics.filter(function(x){return x.orig_path == parent_topic})[0]
       if topic.requirements
+        |
+        | ---
+        |
+        
+        | ## Requirements
+
+        | Before diving into this slide deck, we recommend you to have a look at:
+        
+        
         ul
-        each requirement in topic.requirements
-          
+          each requirement in topic.requirements
               if requirement.type == "internal"
                 li
                   a( href = site.url + requirement.link  ) #{ requirement.title }
@@ -106,7 +105,7 @@ body
       | .footnote[Found a typo? Something is wrong in this tutorial?
       br
       | Edit it on 
-      //-a( href = site.github_repository + "/tree/master/" + topic_name + "/slides/" + topic_name ) GitHub
+      a( href = site.github_repository + "/tree/master/" + topic_name + "/slides/" + topic_name ) GitHub
       | ]
 
     script( src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript")

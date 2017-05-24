@@ -1,0 +1,60 @@
+extends base_slides.pug
+
+block title
+  - var tutorial = tutorials.filter(function(x){return x.orig_path == parent_tutorial})[0]
+  - var topic = topics.filter(function(x){return x.orig_path == parent_topic})[0]
+  .
+    #{ tutorial.title }
+
+
+block content
+  - var tutorial = tutorials.filter(function(x){return x.orig_path == parent_tutorial})[0]
+  - var topic = topics.filter(function(x){return x.orig_path == tutorial.parent_topic})[0]
+
+  if tutorial.questions
+    | ### :grey_question: Questions
+    | 
+    
+    ul 
+      each question in tutorial.questions
+        li #{ question }
+
+    |
+    | ---
+    |
+
+  if tutorial.objectives
+    | ### :dart: Objectives
+    | 
+
+    ul
+      each objective in tutorial.objectives
+        li #{ objective }
+
+    |
+    | ---
+    |
+  
+  .
+    #{ contents }
+
+  |
+  | ---
+  |
+  
+  
+  if tutorial.key_points
+    | ### :grey_exclamation: Key points
+    | 
+
+    ul 
+      each key_point in tutorial.key_points
+        li  #{ key_point }
+
+    |
+    | ---
+    |
+
+  | ## :clap: Congratulations 
+  br
+  | on successfully completing this tutorial!

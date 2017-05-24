@@ -20,9 +20,9 @@ set_metadata_defaults = (files, metalsmith, done) ->
             files[k].layout = 'topic.pug' if files[k].layout == undefined
             files[k].tutorials = []
             files[k].slides = []
+            files[k].slides = []
     for k, v of files
         if 'tutorials' in v.collection
-            files[k].layout = 'default.pug' if files[k].layout == undefined
             parent_topic = k.split('/')[0]
             if files[path.join(parent_topic, 'metadata.md')]
                 files[k].parent_topic = path.join(parent_topic, 'metadata.md')
@@ -34,11 +34,20 @@ set_metadata_defaults = (files, metalsmith, done) ->
                 files[k].parent_topic = path.join(parent_topic, 'metadata.md')
                 files[path.join(parent_topic, 'metadata.md')].slides.push(k)
         else if 'tutorial_slides' in v.collection
-            files[k].layout = 'default.pug' if files[k].layout == undefined
-            parent_tutorial = k.replace('slides.md','')
+            files[k].layout = 'tutorial_slides.pug' if files[k].layout == undefined
+            parent_tutorial = k.replace('slides.html','')
             if files[path.join(parent_tutorial, 'metadata.md')]
                 files[k].parent_tutorial = path.join(parent_tutorial, 'metadata.md')
-                files[path.join(parent_tutorial, 'metadata.md')].slides.push(k)
+                files[path.join(parent_tutorial, 'metadata.md')].tutorial = k
+            parent_topic = k.split('/')[0]
+            if files[path.join(parent_topic, 'metadata.md')]
+                files[k].parent_topic = path.join(parent_topic, 'metadata.md')
+        else if 'tutorial_hands_ons' in v.collection
+            files[k].layout = 'tutorial_hands_on.pug' if files[k].layout == undefined
+            parent_tutorial = k.replace('tutorial.md','')
+            if files[path.join(parent_tutorial, 'metadata.md')]
+                files[k].parent_tutorial = path.join(parent_tutorial, 'metadata.md')
+                files[path.join(parent_tutorial, 'metadata.md')].tutorial = k
     done()
 
 file_staging = (files, metalsmith, done) ->
@@ -86,6 +95,8 @@ ms = metalsmith(__dirname)
             pattern: "*/tutorials/*/metadata.md"
         tutorial_slides:
             pattern: "*/tutorials/*/slides.html"
+        tutorial_hands_ons:
+            pattern: "*/tutorials/*/tutorial.md"
         topic_slides:
             pattern: "*/slides/index.html"
     .use timer 'metalsmith-collections'
