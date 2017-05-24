@@ -80,7 +80,7 @@ ms = metalsmith(__dirname)
         topics:
             pattern: "*/metadata.md"
         tutorials:
-            pattern: "*/tutorials/*/tutorial.html"
+            pattern: "*/tutorials/*/metadata.md"
         tutorial_slides:
             pattern: "*/tutorials/*/slides.html"
         topic_slides:
@@ -88,7 +88,6 @@ ms = metalsmith(__dirname)
     .use timer 'metalsmith-collections'
     .use set_metadata_defaults
     .use timer 'set_metadata_defaults'
-    .use debug_print
     .use require('metalsmith-markdown')
         gfm: true
         renderer: new Renderer()
