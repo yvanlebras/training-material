@@ -12,8 +12,9 @@ block content
   - var topic = topics.filter(function(x){return x.orig_path == tutorial.parent_topic})[0]
 
   if tutorial.questions
-    | ### :grey_question: Questions
-    | 
+    h3 
+      i.fa.fa-question-circle 
+      | Questions
     
     ul 
       each question in tutorial.questions
@@ -24,8 +25,9 @@ block content
     |
 
   if tutorial.objectives
-    | ### :dart: Objectives
-    | 
+    h3 
+      i.fa.fa-check-square 
+      | Objectives
 
     ul
       each objective in tutorial.objectives
@@ -44,8 +46,9 @@ block content
   
   
   if tutorial.key_points
-    | ### :grey_exclamation: Key points
-    | 
+    h3 
+      i.fa.fa-exclamation-triangle 
+      | Key points
 
     ul 
       each key_point in tutorial.key_points
