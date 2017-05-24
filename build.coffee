@@ -2,43 +2,49 @@
 metalsmith = require('metalsmith')
 path = require("path")
 
+debug_print = (files, metalsmith, done) ->
+    # console.log(metalsmith)
+    console.log(metalsmith._metadata.collections.tutorials)
+    done()
+
 set_metadata_defaults = (files, metalsmith, done) ->
     # Simple way to apply metadata defaults
     for k, v of files
         # Autotoc defaults to true
         # Set domain templates
+        files[k].orig_path = k
         files[k].autotoc = true if files[k].autotoc == undefined
+    for k, v of files
         if 'topics' in v.collection
             files[k].layout = 'topic.pug' if files[k].layout == undefined
             files[k].tutorials = []
             files[k].slides = []
-        else if 'tutorials' in v.collection
+    for k, v of files
+        if 'tutorials' in v.collection
             files[k].layout = 'default.pug' if files[k].layout == undefined
-            # Add parent/child links for topic
             parent_topic = k.split('/')[0]
             if files[path.join(parent_topic, 'metadata.md')]
-                files[k].parent_topic = files[path.join(parent_topic, 'metadata.md')]
-                # This is hacky, consolidate logic eventually
-                files[path.join(parent_topic, 'metadata.md')].tutorials = files[path.join(parent_topic, 'metadata.md')].tutorials || []
-                files[path.join(parent_topic, 'metadata.md')].tutorials.push(files[k])
+                files[k].parent_topic = path.join(parent_topic, 'metadata.md')
+                files[path.join(parent_topic, 'metadata.md')].tutorials.push(k)
         else if 'topic_slides' in v.collection
             files[k].layout = 'introduction_slides.pug' if files[k].layout == undefined
-            # Add parent/child links for topic
             parent_topic = k.split('/')[0]
             if files[path.join(parent_topic, 'metadata.md')]
-                files[k].parent_topic = files[path.join(parent_topic, 'metadata.md')]
-                files[path.join(parent_topic, 'metadata.md')].slides = files[path.join(parent_topic, 'metadata.md')].slides || []
-                files[path.join(parent_topic, 'metadata.md')].slides.push(files[k])
+                files[k].parent_topic = path.join(parent_topic, 'metadata.md')
+                files[path.join(parent_topic, 'metadata.md')].slides.push(k)
         else if 'tutorial_slides' in v.collection
             files[k].layout = 'default.pug' if files[k].layout == undefined
-            # Add parent/child links for topic
             parent_tutorial = k.replace('slides.md','')
-            if files[path.join(parent_tutorial, 'tutorial.md')]
-                files[k].parent_tutorial = files[path.join(parent_tutorial, 'tutorial.md')]
-                files[path.join(parent_tutorial, 'tutorial.md')].slides = files[path.join(parent_tutorial, 'tutorial.md')].slides || []
-                files[path.join(parent_tutorial, 'tutorial.md')].slides.push(files[k])
-        #console.log(files)
+            if files[path.join(parent_tutorial, 'metadata.md')]
+                files[k].parent_tutorial = path.join(parent_tutorial, 'metadata.md')
+                files[path.join(parent_tutorial, 'metadata.md')].slides.push(k)
     done()
+
+file_staging = (files, metalsmith, done) ->
+    for k, v of files
+        if 'topics' in collection
+            files[k.replace('metadata.md', 'index.html')] = files[k]
+            delete files[k]
 
 # Extend `marked.Renderer` to increase all heading levels by 1 since we reserve
 # h1 for the page title. Will be passed to `metalsmith-markdown` plugin.
@@ -78,9 +84,10 @@ ms = metalsmith(__dirname)
             pattern: "*/tutorials/*/slides.html"
         topic_slides:
             pattern: "*/slides/index.html"
+    .use timer 'metalsmith-collections'
     .use set_metadata_defaults
     .use timer 'set_metadata_defaults'
-    .use timer 'metalsmith-collections'
+    .use debug_print
     .use require('metalsmith-markdown')
         gfm: true
         renderer: new Renderer()
