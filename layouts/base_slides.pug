@@ -10,10 +10,11 @@ html
 head
 
     meta( charset="utf-8" )
-    block title
-      title = #{ parent_topic.title }
-    link( rel="stylesheet" href= site.url + "/css/slides.css" )
-    link( rel="stylesheet" href= site.url + "/css/font-awesome.css" id="theme" )
+    title
+      block title
+        | placeholder
+    link( rel="stylesheet" href= "/css/slides.css" )
+    link( rel="stylesheet" href= "/css/font-awesome.css" id="theme" )
 
 body
 
@@ -32,7 +33,7 @@ body
       | ---
       |      
       |
-      | ##  Welcome!
+      | ##  Welcome !
       |
       
       | This material is the result of a collaborative work. 
@@ -54,8 +55,11 @@ body
       | ---
       |
       
-      h1 #{ parent_topic.title }
       
+      h1 
+        block title
+          | placeholder
+
       |
       | ---
       |
@@ -63,16 +67,17 @@ body
       | ## Requirements
 
       | Before diving into this slide deck, we recommend you to have a look at:
-
-      //- each requirement in requirements
-          if requirement.type == "internal"
+      |
+      //-each requirement in parent_topic.requirements
+        
+            if requirement.type == "internal"
               | - 
               a( href = site.url + requirement.link  ) #{ requirement.title }
-          else if material.type == "external"
+            else if material.type == "external"
               | - 
               a( href = requirement.link ) #{ requirement.title }
 
-      //- if page.tutorial_name
+      //-if page.tutorial_name
         each requirement in tutorial.requirements
           if requirement.type == "internal"
               | - 
@@ -92,7 +97,7 @@ body
       | .footnote[Found a typo? Something is wrong in this tutorial?
       br
       | Edit it on 
-      a( href = site.github_repository + "/tree/master/" + topic_name + "/slides/" + topic_name ) GitHub
+      //-a( href = site.github_repository + "/tree/master/" + topic_name + "/slides/" + topic_name ) GitHub
       | ]
 
     script( src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript")

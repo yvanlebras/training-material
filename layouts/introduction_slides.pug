@@ -1,11 +1,23 @@
 extends base_slides
 
+block title
+  .
+    #{ parent_topic.title }
+
 block content
-  #{ contents }
-
+  .
+    #{ contents }
+  
+  |
+  | ---
+  |
+  |
   | ## Tutorials
+  |
+  each tutorial in parent_topic.tutorials
+      a( href= site.url + "/" + parent_topic.title + "/tutorials/" + tutorial.tutorial_name  )   #{ tutorial.tutorial_name }
 
-  each tutorial in tutorials
+
       if tutorial.type == "tutorial"
           if tutorial.hands_on == "yes"
             | - 

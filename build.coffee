@@ -31,11 +31,18 @@ set_metadata_defaults = (files, metalsmith, done) ->
                 files[k].parent_topic = files[path.join(parent_topic, 'metadata.md')]
                 files[path.join(parent_topic, 'metadata.md')].slides = files[path.join(parent_topic, 'metadata.md')].slides || []
                 files[path.join(parent_topic, 'metadata.md')].slides.push(files[k])
-        else if 'slides' in v.collection
-            files[k].layout = 'introduction_slides.pug' if files[k].layout == undefined
+        else if 'tutorial_slides' in v.collection
+            files[k].layout = 'default.pug' if files[k].layout == undefined
             files[k].autotoc = false if files[k].autotoc == undefined
+            # Add parent/child links for topic
+            parent_tutorial = k.replace('slides.md','')
+            if files[path.join(parent_tutorial, 'tutorial.md')]
+                files[k].parent_tutorial = files[path.join(parent_tutorial, 'tutorial.md')]
+                files[path.join(parent_tutorial, 'tutorial.md')].slides = files[path.join(parent_tutorial, 'tutorial.md')].slides || []
+                files[path.join(parent_tutorial, 'tutorial.md')].slides.push(files[k])
         else
             files[k].autotoc = true if files[k].autotoc == undefined
+        #console.log(files)
     done()
 
 # Extend `marked.Renderer` to increase all heading levels by 1 since we reserve
@@ -71,11 +78,11 @@ ms = metalsmith(__dirname)
         topics:
             pattern: "*/metadata.md"
         tutorials:
-            pattern: "*/tutorials/*/tutorial.md"
+            pattern: "*/tutorials/*/tutorial.html"
         tutorial_slides:
-            pattern: "*/tutorials/*/slides/slides.md"
+            pattern: "*/tutorials/*/slides.html"
         topic_slides:
-            pattern: "*/slides/index.md"
+            pattern: "*/slides/index.html"
     .use set_metadata_defaults
     .use timer 'set_metadata_defaults'
     .use timer 'metalsmith-collections'
