@@ -10,10 +10,11 @@ debug_print = (files, metalsmith, done) ->
 set_metadata_defaults = (files, metalsmith, done) ->
     # Simple way to apply metadata defaults
     for k, v of files
-        # Autotoc defaults to true
-        # Set domain templates
+        # Keep original path with blob for keying
         files[k].orig_path = k
-        files[k].autotoc = true if files[k].autotoc == undefined
+        # Autotoc defaults to false
+        files[k].autotoc = false if files[k].autotoc == undefined
+    # set domain templates, key parent/child relationships
     for k, v of files
         if 'topics' in v.collection
             files[k].layout = 'topic.pug' if files[k].layout == undefined
