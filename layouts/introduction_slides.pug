@@ -17,24 +17,19 @@ block content
   | ## Tutorials
   |
 
+  if topic.tutorials
+    ul
+    each tutorial_path in topic.tutorials
+        - var tutorial = tutorials.filter(function(x){return x.orig_path == tutorial_path})[0]
+        - var topic_relative_path = topic.orig_path.replace('/metadata.md','')
 
-  each tutorial_path in topic.tutorials
-      - var tutorial = tutorials.filter(function(x){return x.orig_path == tutorial_path})[0]
-      - var topic_relative_path = topic.orig_path.replace('/metadata.md','')
-
-      a( href= site.url + "/" + topic_relative_path + "/tutorials/" + tutorial.tutorial_name  )  #{ tutorial.title }
-      br
-      if tutorial.type == "tutorial"
-          if tutorial.hands_on == "yes"
-            |
-            | -
-            |
-            a( href= site.url + "/" + v + "/tutorials/" + tutorial.tutorial_name  )   #{ tutorial.tutorial_name }
-          else if tutorial.hands_on == "github"
-            | -
-            |
-            a( href= site.github_repository + "/tree/master/" + topic_relative_path + "/tutorials/" + tutorial.tutorial_name  + ".md"  ) #{ tutorial.tutorial_name }
-          else if tutorial.slides == "yes"
-            | -
-            |
-            a( href= site.url + "/" + topic_relative_path + "/slides/" + tutorial.tutorial_name  ) #{ tutorial.tutorial_name }
+        if tutorial.type == "tutorial"
+            if tutorial.hands_on == "yes"
+              li
+                a( href= site.url + topic_relative_path + "/tutorials/" + tutorial.tutorial_name  )   #{ tutorial.title }
+            else if tutorial.hands_on == "github"
+              li
+                a( href= site.github_repository + "/tree/master/" + topic_relative_path + "/tutorials/" + tutorial.tutorial_name  + ".md"  ) #{ tutorial.title }
+            else if tutorial.slides == "yes"
+              li
+                a( href= site.url + topic_relative_path + "/slides/" + tutorial.tutorial_name  ) #{ tutorial.title }
