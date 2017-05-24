@@ -1,3 +1,4 @@
+---
 title: "16S Microbial Analysis with Mothur"
 type: "tutorial"
 name: "mothur-miseq-sop"
@@ -33,3 +34,5 @@ contributors:
     name: "Saskia Hiltemann"
     github_username: "shiltemann"
     email: "zazkia@gmail.com"
+---
+This is now markdown
