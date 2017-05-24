@@ -1,0 +1,132 @@
+extends layout.pug
+
+block content  
+  - var tutorial = tutorials.filter(function(x){return x.orig_path == parent_tutorial})[0]
+  - var topic = topics.filter(function(x){return x.orig_path == tutorial.parent_topic})[0]
+  
+  header
+      nav.navbar.navbar-default.navbar-fixed-top( role="navigation")
+          div.container-fluid
+            div.navbar-header
+              button( type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar")
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              a.navbar-brand#site-title( href="https://wiki.galaxyproject.org/Teach/GTN")
+                img.pull-left.img-responsive( src= site.url + "/" + site.logo alt="Galaxy Training Network logo" style="max-width: 111px;" )
+              a.navbar-brand.name-holder#site-title( href= site.url + "/" + topic.name + "/tutorials/" + tutorial.name )
+                .
+                  #{ tutorial.title }
+
+            div.collapse.navbar-collapse#navbar
+              ul.nav.navbar-nav.navbar-right#main-menu
+                li
+                  a( href= site.url title="Back to front page") 
+                    i.fa.fa-home Home
+                li
+                  a( href= site.url + "/" + topic.name title="Go back to list of tutorials")
+                    i.fa.fa-file-text-o #{ topic.name }
+
+                if tutorial.slides != ""
+                  li
+                    a( href= site.url + "/" + topic.name + "/slides" title="Slides for this tutorial")
+                      i.fa.fa-graduation-cap Introduction slides
+                
+                // li
+                    a( href= site.url + "/" + topic.name + "/slides/" +" tutorial.name + "/"
+                      i( class="fa fa-file-powerpoint-o")
+                        Associated slides
+                
+                if topic.docker_image != ""
+                  li
+                    a( href= site.github_repository + "/tree/master/" + topic.name + "/docker" title="Docker image for this tutorial")
+                      i.fa.fa-ship Docker image
+
+                if tutorial.tutorial_galaxy_instance != ""
+                  li
+                    a( href= tutorial.tutorial_galaxy_instance title="Galaxy instance for this tutorial")
+                      i.fa.fa-external-link Galaxy instance
+
+                if tutorial.zenodo_link != ""
+                  li
+                    a( href= tutorial.zenodo_link title="Links to data")
+                      i.fa.fa-folder-open  Input Dataset
+
+                if tutorial.references != ""
+                  li
+                    a( href= site.url + "/" + topic.name + "#references" title="References" )
+                      i.fa.fa-book  Literature
+                      
+  section.tutorial
+      h1 #{ tutorial.title }
+
+      blockquote.Overview
+          h3 Overview
+
+          p.bold :grey_question: Questions
+          ul
+            each question in tutorial.questions
+              li #{ question }
+
+          p.bold :dart: Objectives
+          ul
+            each objective in tutorial.objectives
+              li #{ objective }
+
+          if topic.requirements || tutorial.requirements
+          p.bold :heavy_check_mark: Requirements
+          if topic.requirements || tutorial.requirements
+          ul
+            if topic.requirements
+              each requirement in topic.requirements
+                li
+                  if requirement.type == "internal"
+                    a( href= site.url + requirement.link) #{ requirement.title }
+                  else if requirement.type == "external"
+                    a( href= requirement.link ) #{ requirement.title }
+            if tutorial.requirements
+              each requirement in tutorial.requirements
+                li
+                  if requirement.type == "internal"
+                    a( href= site.url + requirement.link) #{ requirement.title }
+                  else if requirement.type == "external"
+                    a( href= requirement.link ) #{ requirement.title }
+
+          p
+            span.bold :hourglass: Time estimation: #{ tutorial.time_estimation }
+
+      
+      #{ contents }
+      
+      if tutorial.key_points
+        blockquote.key_points
+          h3 :grey_exclamation: Key points
+
+          ul
+            each key_point in tutorial.key_points
+             li #{ key_point }
+
+      if topic.references
+        h1 Useful literature
+        p 
+          Useful information regarding this type of analysis with descriptions and paper references for the tools used in this tutorial, and literature for this analysis techniques and interpretations can be found 
+          a( href= site.url + "/" + topic.name + "#references") here
+          | .
+
+      h3 :clap: Congratulations on successfully completing this tutorial!
+      hr
+      i 
+        This material is the result of a collaborative work. Thanks to 
+        a( href= site.url + "/" + topic.name + "#contributors") all the contributors
+        and the 
+        a( href="https://wiki.galaxyproject.org/Teach/GTN") Galaxy Training Network
+        | !
+        br
+          
+      Found a typo? Something is wrong in this tutorial? Edit it on 
+      a( href= site.github_repository + "/tree/master/" +  topic.name + "/tutorials/" + tutorial.name  + ".md") GitHub
+      | .
