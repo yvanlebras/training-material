@@ -1,8 +1,4 @@
----
-topic_name: Metagenomics
-tutorial_name: mothur-miseq-sop
-type: tutorial
----
+
 
 # Overview
 In this tutorial we will perform the
@@ -22,7 +18,7 @@ creators of the Mothur software package, the [Schloss lab](http://www.schlosslab
 >   - [Chimera Removal](#chimera-removal)
 >   - [Remove contamination](#removal-of-non-bacterial-sequences)
 >   - [Assess error rate by sequencing a mock community](#assessing-error-rates-based-n-our-mock-community)
->   - [Prepare for analysis](#preparing-for-analysis)  
+>   - [Prepare for analysis](#preparing-for-analysis)
 > 3. [Perform OTU-based analysis](#otu-based-analysis)
 >   - [Alpha diversity](#alpha-diversity)
 >   - [Beta diversity](#beta-diversity)
@@ -81,7 +77,7 @@ setup, we additionally resequenced a mock community composed of genomic DNA from
 > ### :nut_and_bolt: Dataset details
 > Because of the large size of the original dataset (3.9 GB) you are given 20 of the 362 pairs of fastq
 > files. For example, you will see two files: `F3D0_S188_L001_R1_001.fastq`, and
-> `F3D0_S188_L001_R2_001.fastq`  
+> `F3D0_S188_L001_R2_001.fastq`
 >
 > These two files correspond to Female 3 on Day 0 (F3D0) (i.e. the day of weaning). The first file
 > (and all those with R1 in the name) correspond to the forward reads, while the second (and all
@@ -604,7 +600,7 @@ Let's go ahead and classify those sequences using the Bayesian classifier with t
 > >      <br><br>
 > >      162 total sequences were removed. <br>
 > >      If you run summary.seqs with the count table, you will see that we now have 2608 unique sequences
-> >      representing a total of 119,168 total sequences (down from 119,330 before). This means 162 of our  
+> >      representing a total of 119,168 total sequences (down from 119,330 before). This means 162 of our
 > >      sequences were in represented by these 20 representative sequences.
 > >    </details>
 > {: .question}
@@ -702,7 +698,7 @@ We can now cluster the mock sequences into OTUs to see how many spurious OTUs we
 > - **Dist.seqs** :wrench: with the following parameters
 >   - "fasta" to the fasta from Get.groups
 >   - "cutoff" to `0.20`
->  
+>
 > Next we group sequences into OTUs
 >
 > - **Cluster** :wrench: with the following parameters
@@ -1012,7 +1008,7 @@ coefficient](http://csyue.nccu.edu.tw/ch/2005communicationindex.pdf)
 > - **Heatmap.sim** :wrench: with the following parameters
 >   - "Generate Heatmap for" to `phylip`
 >   - "phylip" to output by Dist.shared (this is a collection input)
->  
+>
 > <!-- TODO: way to view the SVGs inside Galaxy? -->
 {: .hands_on}
 

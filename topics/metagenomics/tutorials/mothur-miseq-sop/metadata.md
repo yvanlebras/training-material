@@ -1,11 +1,13 @@
 ---
+topic_name: Metagenomics
+tutorial_name: mothur-miseq-sop
 title: "16S Microbial Analysis with Mothur"
 type: "tutorial"
 name: "mothur-miseq-sop"
 zenodo_link: "https://doi.org/10.5281/zenodo.165147"
 galaxy_tour: ""
 hands_on: "yes"
-slides: "no"
+slides: "yes"
 
 questions:
 - "What is the effect of normal variation in the gut microbiome on host health?"

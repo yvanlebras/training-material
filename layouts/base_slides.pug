@@ -67,24 +67,33 @@ body
       | ## Requirements
 
       | Before diving into this slide deck, we recommend you to have a look at:
-      |
-      //-each requirement in parent_topic.requirements
-        
-            if requirement.type == "internal"
-              | - 
-              a( href = site.url + requirement.link  ) #{ requirement.title }
-            else if material.type == "external"
-              | - 
-              a( href = requirement.link ) #{ requirement.title }
+      
+      
+      - var topic = topics.filter(function(x){return x.orig_path == parent_topic})[0]
+      if topic.requirements
+        ul
+        each requirement in topic.requirements
+          
+              if requirement.type == "internal"
+                li
+                  a( href = site.url + requirement.link  ) #{ requirement.title }
+              else if material.type == "external"
+                li 
+                  a( href = requirement.link ) #{ requirement.title }
 
-      //-if page.tutorial_name
-        each requirement in tutorial.requirements
-          if requirement.type == "internal"
-              | - 
-              a( href = site.url + requirement.link ) #{ requirement.title }
-          else if material.type == "external"
-              | - 
-              a( href = requirement.link ) #{ requirement.title }
+      if topic.tutorials
+        ul
+        each tutorial_path in topic.tutorials
+            - var tutorial = tutorials.filter(function(x){return x.orig_path == tutorial_path})[0]
+
+            if tutorial.requirements
+              each requirement in tutorial.requirements
+                if requirement.type == "internal"
+                    li 
+                      a( href = site.url + requirement.link ) #{ requirement.title }
+                else if material.type == "external"
+                    li 
+                      a( href = requirement.link ) #{ requirement.title }
 
       |
       | ---
