@@ -7,14 +7,13 @@ set_metadata_defaults = (files, metalsmith, done) ->
     for k, v of files
         # Autotoc defaults to true
         # Set domain templates
+        files[k].autotoc = true if files[k].autotoc == undefined
         if 'topics' in v.collection
             files[k].layout = 'topic.pug' if files[k].layout == undefined
-            files[k].autotoc = false if files[k].autotoc == undefined
             files[k].tutorials = []
             files[k].slides = []
         else if 'tutorials' in v.collection
             files[k].layout = 'default.pug' if files[k].layout == undefined
-            files[k].autotoc = false if files[k].autotoc == undefined
             # Add parent/child links for topic
             parent_topic = k.split('/')[0]
             if files[path.join(parent_topic, 'metadata.md')]
@@ -24,7 +23,6 @@ set_metadata_defaults = (files, metalsmith, done) ->
                 files[path.join(parent_topic, 'metadata.md')].tutorials.push(files[k])
         else if 'topic_slides' in v.collection
             files[k].layout = 'introduction_slides.pug' if files[k].layout == undefined
-            files[k].autotoc = false if files[k].autotoc == undefined
             # Add parent/child links for topic
             parent_topic = k.split('/')[0]
             if files[path.join(parent_topic, 'metadata.md')]
@@ -33,15 +31,12 @@ set_metadata_defaults = (files, metalsmith, done) ->
                 files[path.join(parent_topic, 'metadata.md')].slides.push(files[k])
         else if 'tutorial_slides' in v.collection
             files[k].layout = 'default.pug' if files[k].layout == undefined
-            files[k].autotoc = false if files[k].autotoc == undefined
             # Add parent/child links for topic
             parent_tutorial = k.replace('slides.md','')
             if files[path.join(parent_tutorial, 'tutorial.md')]
                 files[k].parent_tutorial = files[path.join(parent_tutorial, 'tutorial.md')]
                 files[path.join(parent_tutorial, 'tutorial.md')].slides = files[path.join(parent_tutorial, 'tutorial.md')].slides || []
                 files[path.join(parent_tutorial, 'tutorial.md')].slides.push(files[k])
-        else
-            files[k].autotoc = true if files[k].autotoc == undefined
         #console.log(files)
     done()
 
