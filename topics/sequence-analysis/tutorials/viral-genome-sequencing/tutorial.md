@@ -182,45 +182,19 @@ Snippy maps reads from the new Murray Valley encephalitis virus isolate (the `MV
 >   - "First set of reads" to `MVE_R1`
 >   - "Second set of reads" to `MVE_R2`
 >
->   ![snippy_window](../../images/snippy.png)
+>    ![snippy_window](../../images/snippy.png)
+>
+> 2. Examine the results:
+>   - `snps vcf file`, `snps gff file`, `snps table`, `snps summary`: Files cataloging SNP differences
+>   - `log file`: A log of the progress of the run:
+>   - `aligned fasta`: Regions where reads aligned (`NNNN` `---`, indicate regions where there was low or no read data)
+>   - `consensus fasta`: A consensus genome sequence for the new isolate
+>   - `mapping depth`: Summary of the read depth
+>   - `out dir`: A compressed version of the above files (and more that can be downloaded)
 >
 {: .hands_on}
 
 
-## Examing the results
-
-Files cataloging SNP differences:
-
-- 9: <fn>snippy on data 4, data 3, and data 2 snps vcf file</fn>
-- 10: <fn>snippy on data 4, data 3, and data 2 snps gff file</fn>
-- 11: <fn>snippy on data 4, data 3, and data 2 snps table</fn>
-- 12: <fn>snippy on data 4, data 3, and data 2 snps summary</fn>
-
-A log of the progress of the run:
-
-- 13: <fn>snippy on data 4, data 3, and data 2 log file</fn>
-
-Regions where reads aligned (NNNN ---, indicate regions where there was low or no read data):
-
-- 14: <fn>snippy on data 4, data 3, and data 2 aligned fasta</fn>
-
-A consensus genome sequence for the new isolate:
-
-- 15: <fn>snippy on data 4, data 3, and data 2 consensus fasta</fn>
-
-Summary of the read depth:
-
-- 16: <fn>snippy on data 4, data 3, and data 2 mapping depth</fn>
-
-A compressed version of the above files (and more that can be downloaded):
-
-- 17: <fn>snippy on data 4, data 3, and data 2 out dir</fn>
-
-Download these files to your local computer (click on the file name and then the disk icon in the lower left hand corner):
-
-- 17: <fn>snippy on data 4, data 3, and data 2 out dir</fn> (and unzip)
-- 2: <fn>MVEV.gbk</fn>
-- 1: <fn>MVEV.fna</fn>
 
 Also download these bam files from these URLs (open each URL in a new tab and the file should download automatically):
 
@@ -236,9 +210,9 @@ Note: if you have previously downloaded these files, the new downloads may be re
 
 -->
 
-#Artemis
+# Artemis
 
-##Section overview:###
+## Section overview:
 
 - View the reads from the new isolate mapped against the reference sequence, using the tool Artemis.
 
@@ -246,12 +220,12 @@ Artemis is a tool to view genome sequences and mapped reads, including variants 
 
 If Artemis is not installed, go to <http://www.sanger.ac.uk/science/tools/artemis>.
 
-##View the reference sequence###
+## View the reference sequence
 
 - Open Artemis.
 - Go to <ss>File: Open</ss> and select <fn>MVEV.gbk</fn>. The file will probably have a "Galaxy" prefix, e.g. <fn>Galaxy2-[MVEV.gbk].genbank</fn>.
 
-##The Artemis window:###
+## The Artemis window:
 
 - panes 1 and 2 are the same, but can be scaled differently
 - each pane has the double-stranded sequence in the centre, with amino acid translations above and below
@@ -265,7 +239,7 @@ If Artemis is not installed, go to <http://www.sanger.ac.uk/science/tools/artemi
 
 ![artemis_window](../../images/artemis.png)
 
-##Add a plot###
+## Add a plot
 
 - Go to <ss>Graph: Add User Plot</ss>, select <fn>snps.depth.gz</fn>
 -  A graph should display at the top of the screen <!-- Dieter:  [is this depth of reads or depth of snps?] -->
