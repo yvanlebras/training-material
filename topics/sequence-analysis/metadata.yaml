@@ -142,6 +142,30 @@ material:
     contributors:
       - yvanlebras
 
+  -
+    title: "Viral Genome Sequencing"
+    type: "tutorial"
+    name: "viral-genome-sequencing"
+    zenodo_link: ""
+    galaxy_tour: no
+    hands_on: yes
+    slides: no
+    workflows: no
+    questions:
+      - "How to analyze RAD sequencing data for a genetic map study?"
+    objectives:
+      - "SNP calling from RAD sequencing data"
+      - "Find and correct haplotypes"
+      - "Create input files for genetic map building software"
+    time_estimation: "1/2d"
+    key_points:
+      - ""
+    contributors:
+      - annasyme
+      - slugger70
+      - shiltemann
+      - erasche
+
 maintainers:
   - yvanlebras
   - bebatut

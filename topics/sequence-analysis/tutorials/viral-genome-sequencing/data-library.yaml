@@ -1,0 +1,13 @@
+---
+libraries:
+    # This needs to be changed to reference your Zenodo data
+    - name: "Small test files"
+      files:
+          - url: "https://zenodo.org/record/1156450/files/MVE_R1.fq_3.fastqsanger"
+            file_type: "fastqsanger"
+          - url: "https://zenodo.org/record/1156450/files/MVE_R2.fq_4.fastqsanger"
+            file_type: "fastqsanger"
+          - url: "https://zenodo.org/record/1156450/files/MVEV.fna_1.fasta"
+            file_type: "fasta"
+          - url: "https://zenodo.org/record/1156450/files/MVEV.gbk_2.genbank"
+            file_type: "genbank"
