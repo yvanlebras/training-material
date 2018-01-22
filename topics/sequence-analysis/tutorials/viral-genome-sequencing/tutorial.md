@@ -132,7 +132,7 @@ For this tutorial we will need to import 4 datasets into our history.
 
 ## Preliminary Activity
 
-> ### {% icon hands_on %} Hands-on: Obtaining our data
+> ### {% icon hands_on %} Hands-on: Quality Control
 >
 > 1. Run **FastQC** {% icon tool %}
 >   - on each of the two fastq files
@@ -173,7 +173,7 @@ For this tutorial we will need to import 4 datasets into our history.
 
 Snippy maps reads from the new Murray Valley encephalitis virus isolate (the `MVE_R1.fq` and `MVE_R2.fq` reads) onto the genome sequence of Murray Valley encephalitis virus strain 1-151 (`MVEV.fna`). <!-- Dieter: [or gbk? that's in the screenshot] -->
 
-> ### {% icon hands_on %} Hands-on: Obtaining our data
+> ### {% icon hands_on %} Hands-on: Snippy
 >
 > 1. Run **Snippy** {% icon tool %} with the following parameters:
 >   - "Reference Type" to `genbank`
@@ -187,7 +187,7 @@ Snippy maps reads from the new Murray Valley encephalitis virus isolate (the `MV
 {: .hands_on}
 
 
-## Output
+## Examing the results
 
 Files cataloging SNP differences:
 
