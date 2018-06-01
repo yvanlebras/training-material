@@ -29,8 +29,13 @@ matrix:
     - env: CHECK=site-build
       if: branch != gh-pages
     - env: CHECK=htmlproofer
+    - env: CHECK=pdf-generation
+      if: branch != gh-pages
   allow_failures:
     - env: CHECK=htmlproofer
+
+before_script:
+  - mkdir _pdf
   
 install:
   - sudo apt-get update
@@ -65,6 +70,9 @@ script:
       elif [ "$CHECK" == "site-build" ]
       then
         make build
+      elif [ "$CHECK" == "pdf-generation" ]
+      then
+        make pdf
       fi
     fi
 

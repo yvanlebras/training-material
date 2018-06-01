@@ -109,15 +109,14 @@ check-links-gh-pages:  ## validate HTML on gh-pages branch (for daily cron job)
 .PHONY: check-links-gh-pages
 
 pdf: detached-serve ## generate the PDF of the tutorials and slides
-	mkdir -p _pdf
 	@for t in $(TUTORIALS); do \
 		name="$(PDF_DIR)/$$(echo $$t | tr '/' '-' | sed -e 's/html/pdf/' -e 's/topics-//' -e 's/tutorials-//')"; \
+		echo "$$name"; \
 		${CHROME} \
             --headless \
             --disable-gpu \
             --print-to-pdf="$$name" \
-            "$(SITE_URL)/$$t?with-answers" \
-            2> /dev/null ; \
+            "$(SITE_URL)/$$t?with-answers" ; \
     done
 	@for s in $(SLIDES); do \
 		name="$(PDF_DIR)/$$(echo $$s | tr '/' '-' | sed -e 's/html/pdf/' -e 's/topics-//' -e 's/tutorials-//')"; \

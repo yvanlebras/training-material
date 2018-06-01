@@ -32,6 +32,7 @@ To generate the PDFs, a command `make pdf` is given. This command:
 > 2. Install Chrome
 >    - For OSX, install the [Chrome browser]()
 >    - For Ubuntu, follow [these instructions]()
+> 2. Create `_pdf` folder
 > 1. Generate the PDFs: `make pdf`
 > 2. Check the generated PDFs in `_pdf` folder
 {: .hands_on}
