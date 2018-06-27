@@ -43,6 +43,8 @@ material:
     contributors:
       - shiltemann
       - bebatut
+    translation:
+      - jp
   -
     title: "Analyses of metagenomics data - The global picture"
     type: "tutorial"

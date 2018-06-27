@@ -67,7 +67,7 @@ layout: base
                         {% if material.type == "introduction" %}
                             <td>
                                 {% if material.slides %}
-                                <a href="{{ site.baseurl }}/topics/{{ topic.name }}/slides/{{ material.name }}.html">
+                                <a class="topic-icon" href="{{ site.baseurl }}/topics/{{ topic.name }}/slides/{{ material.name }}.html">
                                   {% icon slides %}
                                 </a>
                                 {% endif %}
@@ -83,7 +83,7 @@ layout: base
                         {% elsif material.type == "tutorial" %}
                             <td>
                                 {% if material.slides %}
-                                <a href="{{ site.baseurl }}/topics/{{ topic.name }}/tutorials/{{ material.name }}/slides.html">
+                                <a class="topic-icon" href="{{ site.baseurl }}/topics/{{ topic.name }}/tutorials/{{ material.name }}/slides.html">
                                   {% icon slides %}
                                 </a>
                                 {% endif %}
@@ -91,24 +91,40 @@ layout: base
 
                             <td>
                                 {% if material.hands_on == "external" %}
-                                <a href="{{ material.hands_on_url }}">
+                                <a class="topic-icon" href="{{ material.hands_on_url }}">
                                   {% icon tutorial %}
                                 </a>
                                 {% elsif material.hands_on == "github" %}
-                                <a href="{{ site.github_repository }}/tree/master/topics/{{ topic.name }}/tutorials/{{ material.name }}/tutorial.md">
+                                <a class="topic-icon" href="{{ site.github_repository }}/tree/master/topics/{{ topic.name }}/tutorials/{{ material.name }}/tutorial.md">
                                   {% icon tutorial %}
                                 </a>
                                 {% elsif material.hands_on %}
-                                <a href="{{ site.baseurl }}/topics/{{ topic.name }}/tutorials/{{ material.name }}/tutorial.html">
-                                  {% icon tutorial %}
-                                </a>
+                                    {% if material.translation %}
+                                        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+                                            {% icon tutorial %}
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <a class="dropdown-item" href="{{ site.baseurl }}/topics/{{ topic.name }}/tutorials/{{ material.name }}/tutorial.html" title="{{ inst[0] }}">
+                                                :gb:
+                                            </a>
+                                        {% for lang in material.translation %}
+                                            <a class="dropdown-item" href="{{ site.baseurl }}/topics/{{ topic.name }}/tutorials/{{ material.name }}/tutorial_{{ lang }}.html" title="{{ inst[0] }}">
+                                                :{{ lang }}:
+                                            </a>
+                                        {% endfor %}
+                                        </ul>
+                                    {% else %}
+                                        <a class="topic-icon" href="{{ site.baseurl }}/topics/{{ topic.name }}/tutorials/{{ material.name }}/tutorial.html">
+                                            {% icon tutorial %}
+                                        </a>
+                                    {% endif %}
                                 {% endif %}
                             </td>
 
                             {% if topic.type == "use" %}
                                 <td>
                                     {% if material.zenodo_link != "" %}
-                                    <a href="{{ material.zenodo_link }}">
+                                    <a class="topic-icon" href="{{ material.zenodo_link }}">
                                       {% icon zenodo_link %}
                                     </a>
                                     {% endif %}
@@ -128,6 +144,7 @@ layout: base
                                     {% endif %}
                                 </td>
                             {% endif %}
+
                             {% if instances[topic.name].supported %}
                                 <td>
                                 {% if instances[topic.name]['tutorials'][material.name].supported %}
