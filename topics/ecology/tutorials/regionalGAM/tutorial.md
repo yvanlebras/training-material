@@ -97,14 +97,24 @@ First of all, you will have to upload the files on Galaxy-E and then you might h
 {: .hands_on}
 
 >    > ## <a name="resampling"></a>Re-sampling. 
-When the dataset contains many details, it lengthens the file processing time therefore it can be very useful to learn how to hide the informations you don't need. For example, the list of SITE of the dataset you are using is really long and the SITES are classified into sub-sites. Here, we will assume that your file doesn't really need be as precise and this is the reason why you have to specify you don't want the sub-sites. To create a new "down-sampled" file, you can follow these steps:   
+When the dataset contains many details, it lengthens the file processing time therefore it can be very useful to learn how to hide the informations you don't need. For example, the list of sites (look at the column with header `SITE)` of the dataset you are using is really long, and this seems to be related to a classification of each site into several sub-sites. Here, we will assume that your file doesn't really need to be as precise and we will remove inforamtion about these sub-sites. To create a new "down-sampled" file, you can follow these steps:   
 
 > ### {% icon hands_on %} Hands-on: hiding some informations
->    > 1. Search for the tool `trouver et remplacer des patterns dans des colonnes` on the file on CSV with the following  parameters.
->    >  * Click on`"insert checks"`
->    >  * "Trouver l'expression suivante": `"(\.[0-9]+)"` which specifies that you don't want the sub-sites (all suites of digits following a "." character) to be taken into account.
->    >  * "Remplacement":`"leave it empty"`.
->    > 3. Search for the tool `tabular to CSV`and select the file of **trouver et remplacer des patterns dans des colonnes**.
+>    > 1. Use the `CSV to tabular` tool to first create a tabular file from your csv one (with only one species). This is a mandatory step as further tools are only working on tabular files!
+>    > 2. Search for the tool `trouver et remplacer des patterns dans des colonnes` on the file on CSV with the following  parameters.
+>    >    >  * Select the input file & the column with the SITE header.
+>    >    >  * Click on`"insert checks"`
+>    >    >  * "Trouver l'expression suivante": `"(\.[0-9]+)"` which specifies that you don't want the sub-sites (all suites of digits following a "." character) to be taken into account.
+>    >    >  * "Remplacement": leave it empty.
+>    >    > ### {% icon question %} Questions After having successfully deleted the sub-sites informations, can you look at the original dataset and this new one and say how many sites you had, and you have now? You will maybe need to use tools like `Compter le nombre d'occurrences de chaque enregistrement`
+>    >    >    <details>
+>    >    >    <summary>Click to view answers</summary>
+>    >    >    <ol type="1">
+>    >    >    <li>The dataset contains 6 sites now against 1144 before "down-sampling". </li>
+>    >    >    </ol>
+>    >    >    </details>
+>    {: .question}
+>    > 3. Now you can regenerate a CSV file using the `tabular to CSV` tool on the `trouver et remplacer des patterns dans des colonnes` output file.
 >    
 {: .hands_on}
 
