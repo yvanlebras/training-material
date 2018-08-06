@@ -120,12 +120,12 @@ When the dataset contains many details, it lengthens the file processing time th
 
 # Step 2: Selectionning one specific species and showing all the data corresponding to it
 
-The second step of any Regional GAM data analysis is making sure to have one dataset of only one specific species that you will then be able to use. If you want to create a graph showing abundance evolution by years of several species, you will have to superimpose the graphs on one another. 
+The second step of any Regional GAM data analysis is making sure to have one dataset of only one species that you will then be able to use. If you want to treat several species; you have to, for now, execute the regionalGAM workflow on each species related dataset and then merge / concatenate results, for example to create a graph showing abundance evolution by years of all the species. 
 
 > ### {% icon hands_on %} Hands-on: How many species are taken into account in this dataset
 >
-> As the dataset is quite big and countains heterogeneous informations, you want to know wether the data are about one species or more.
-> 1. Search for the tool `compter le nombre d'occurence de chaque enrégistrement`with the following parameters.
+> As the dataset is quite big and contains heterogeneous informations, you want to know wether the data are about one species or more.
+> 1. Search for the tool `compter le nombre d'occurence de chaque enrégistrement` with the following parameters.
 > * "Compter les occurrences des valeurs présentes dans la(les) colonne(s)": `column 1`
 > * "Délimité par": `tabulation`.
 > * "Comment les résultats doivent t'ils être triés ?": `Avec la valeur la plus présente en premier`.
