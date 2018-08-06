@@ -1,5 +1,5 @@
 ---
-layout: tutorial hands on
+layout: tutorial_hands_on
 topic_name: ecology
 tutorial_name: Regional GAM
 ---
@@ -9,7 +9,7 @@ tutorial_name: Regional GAM
 
 
 This tutorial will show how to study species phenology through the computation of abundance index and trends. It will explain you how to use different [regionalGAM](https://github.com/RetoSchmucki/regionalGAM) tools on Galaxy-E allowing you to deal with datasets containing occurences informations for various species per site and per date through a couple of years.
-After a certain numbers of steps, you will be able to extract single species data and study related phenology through the years. The goal of this exercise is to be able to create abundance trend over time and biodiversity indicators. You could for example try to predict the occurences of one specific species in a certain type of environnement using the prediction model of climate evolution. Based on charts that you will generate, you could try to explain the evolution of a species with environmental data (temperatures variations, modifications of the environmental conditions).
+After a certain numbers of steps, you will be able to extract single species data and study related phenology through the years. The goal of this exercise is to be able to create abundance trend over time and biodiversity indicators. Following these indicators allow to follow trends in terms of population dynamics. You could for example try to predict the occurences of one specific species in a certain type of environnement using the prediction model of climate evolution. Based on charts that you will generate, you could try to explain the evolution of a species with environmental data (temperatures variations, modifications of the environmental conditions).
 You will basically learn how to create a file on the basis of which you can create a visual material that can be quite easily understood and therefore be efficient for a large audience.
 
 
@@ -70,8 +70,8 @@ First of all, you will have to upload the files on Galaxy-E and then you might h
 >   >      * "Select which attribute(s) you want to extract": select everything but "trend"
 >   >      * ⚠️ Please note that the tool `RData parser` creates separated files, each of them containing one column. The file with the "TREND" header can be let aside as we don't need it for what will follow.
 >   > * Search for the tool `Coller deux jeux de données l'un à côté de l'autre` to create a file comporting all the data     required with the following parameters:
->   >      * "Coller":  outut of **RData parser** headed with "SPECIES"
->   >      * "et": output of **RData parser** with headed with "SITE"
+>   >      * "Coller":  outut from **RData parser** headed with "SPECIES"
+>   >      * "et": output from **RData parser** with headed with "SITE"
 >   >      * Repeat `Coller deux jeux de données l'un à côté de l'autre` as many times as there are separated files in order to create a final dataset with all the columns. First you must paste 2 columns together, then you must paste this last file with a third column and do this action again and again until your final file countains all the columns. 
 >   >      * Repeat `Coller deux jeux de données l'un à côté de l'autre` pasting the file containing 2 columns with the one headed by "YEAR".
 >   >      * Repeat `Coller deux jeux de données l'un à côté de l'autre` pasting the file containing 3 columns with the one headed by "MONTH". 
@@ -100,6 +100,7 @@ First of all, you will have to upload the files on Galaxy-E and then you might h
 When the dataset contains many details, it lengthens the file processing time therefore it can be very useful to learn how to hide the informations you don't need. For example, the list of sites (look at the column with header `SITE)` of the dataset you are using is really long, and this seems to be related to a classification of each site into several sub-sites. Here, we will assume that your file doesn't really need to be as precise and we will remove inforamtion about these sub-sites. To create a new "down-sampled" file, you can follow these steps:   
 
 > ### {% icon hands_on %} Hands-on: hiding some informations
+
 >    > 1. Use the `CSV to tabular` tool to first create a tabular file from your csv one (with only one species). This is a mandatory step as further tools are only working on tabular files!
 >    > 2. Search for the tool `trouver et remplacer des patterns dans des colonnes` on the file on CSV with the following  parameters.
 >    >    >  * Select the input file & the column with the SITE header.
@@ -114,8 +115,8 @@ When the dataset contains many details, it lengthens the file processing time th
 >    >    >    </ol>
 >    >    >    </details>
 >    {: .question}
->    > 3. Now you can regenerate a CSV file using the `tabular to CSV` tool on the `trouver et remplacer des patterns dans des colonnes` output file.
->    
+>    > 3. Now you can regenerate a CSV file using the `tabular to CSV` tool on the ouptut from **trouver et remplacer des patterns dans des colonnes**.
+
 {: .hands_on}
 
 # Step 2: Selectionning one specific species and showing all the data corresponding to it
@@ -126,13 +127,14 @@ The second step of any Regional GAM data analysis is making sure to have one dat
 >
 > As the dataset is quite big and contains heterogeneous informations, you want to know wether the data are about one species or more.
 > 1. Search for the tool `compter le nombre d'occurence de chaque enrégistrement` with the following parameters.
+> * "Sur le jeu de données": `output`from **tabular to CSV**.
 > * "Compter les occurrences des valeurs présentes dans la(les) colonne(s)": `column 1`
 > * "Délimité par": `tabulation`.
-> * "Comment les résultats doivent t'ils être triés ?": `Avec la valeur la plus présente en premier`.
+> * "Comment les résultats doivent t'ils être triés ?": `"Avec la valeur la plus présente en premier"`.
 > 2. Inspect the file by clicking on the `eye` icon to check how many species are taken into account.
 > > If there is only one species you can skip the following steps and go directly to the file datatype convertion step using the tool `tabular to CSV`
 >
->    > ### Create a new file concerning only the data of one species
+>    > ### Creating a new file concerning only the data of one species
 >    > 1. Copy the name of the species you are interested in from the CSV file (for example: "Pyronia tithonus").
 >    > 2. Search for the tool`filtrer des données dur une colonne en utilisant des expressions simples`with the following   parameters.
 >    > * En utilisant la condition suivante: `"c1=='habitat2'"` replacing 'habitat2' with the name of the species (for example: `"c1=='"Pyronia tithonus"'"`)  
@@ -221,16 +223,20 @@ If you want to access the chart on an interactive interface, you can click on th
 >    > * "Use multi-panels": click on `"No"`(or you will have three different charts)
 >    > 8. Click on {% icon tip %} `Visualize`
 >    > 9. Click on {% icon tip %} `save this visualization`if you are willing to keep it
+
+{: .hands_on}
 >
 >
-> ### {% icon hands_on %} Hands-on: Abundance per year and per site
+> ### Abundance per year and per site
+
+This will allow you to create a file showing the abundance per year of a chosen species in a certain site. Based on this file you will then learn how to represent this abundance on a chart. 
 >
 > 1. Look for the tool `Abundance index` with the following parameters:
 > * "Fichier de comptage": `output` from **tabular to CSV**.  
 > * "Flight curve output": `output` from **flight curve**.
 
 
-> 🔹 Based on the abundance index, we can create a chart showing the anual trend abundance of a certain species per site. 
+> 🔹 Based on the abundance index, we can create a chart showing the annual abundance trend of a certain species per site. 
 >    > 1. Select `"Charts"`
 >    > 2. Give it a proper name
 >    > 3. Select a visualization: "Bar diagram (NVD 3)" 
@@ -241,6 +247,7 @@ If you want to access the chart on an interactive interface, you can click on th
 >    > 5. Visualize
 >    > 6. Click on {% icon tip %} `save this visualization`if you are willing to keep it
 
+{: .hands_on}
 
 > ### Expected temporal trend
 
