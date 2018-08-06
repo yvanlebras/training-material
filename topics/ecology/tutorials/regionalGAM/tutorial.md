@@ -59,9 +59,9 @@ First of all, you will have to upload the files on Galaxy-E and then you might h
 >
 > ⚠️ <a name="inputdatawarning"></a>Please note that the file must contain a header corresponding to: ```"SITES","SPECIES","YEAR","MONTH","DAY","COUNT"```, and that all the non numeric content must be between double quotes as "x" and that separators have to be ",". 
 >
-> ❗If the dataset you have uploaded is on CSV format, you can skip the following part and directly go to ## Re-sampling.
+> ❗ If the dataset you have uploaded is on CSV format, you can skip the following part and directly go to [the resampling section](#resampling).
 >
-> ❗However, if you are dealing with a dataset on the RData format (the second of the links listed above), you will have to process this binary file to obtain an appropriate CSV dataset. To do so, you can use the following tools:
+> ❗ However, if you are dealing with a dataset on the RData format (the second of the links listed above), you will have to process this binary file to obtain an appropriate CSV dataset. To do so, you can use the following tools:
 >   > * Search for the tool `RData binary file reader`with the following parameters:
 >   >      * "Rdata binary file to explore": "dataset on RData" 
 >   > * Search for the tool `RData parser` with the following parameters:
@@ -96,7 +96,7 @@ First of all, you will have to upload the files on Galaxy-E and then you might h
 
 {: .hands_on}
 
->    > ## Re-sampling. 
+>    > ## <a name="resampling"></a>Re-sampling. 
 When the dataset contains many details, it lengthens the file processing time therefore it can be very useful to learn how to hide the informations you don't need. For example, the list of SITE of the dataset you are using is really long and the SITES are classified into sub-sites. Here, we will assume that your file doesn't really need be as precise and this is the reason why you have to specify you don't want the sub-sites. To create a new "down-sampled" file, you can follow these steps:   
 
 > ### {% icon hands_on %} Hands-on: hiding some informations
