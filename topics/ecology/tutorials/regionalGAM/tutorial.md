@@ -448,7 +448,7 @@ We can also test for autocorrelation in the data.
 ![Autocorrelation test graph](../../images/regionalGAM/Autocorrelation_test.png)
 
 
-Have a look at this plot. ACF plot has a significant spike at lag 3, it is, however, really close to the limit.
+Have a look at this plot. ACF plot has a significant spike at lag 3, it is, however, really close to the limit. This means that there is some autocorrelation in our residuals. We will try to account for that in our next model.
 
 > ### {% icon hands_on %} Hands-on: Model temporal trend taking into account autocorrelation of residuals
 > 1. **Plot abundance with trend line** {% icon tool %} with the following parameters.
