@@ -11,9 +11,9 @@ objectives:
     - "Compute temporal abundance trends"
 time_estimation: "2h30m"
 key_points:
-    - "We sequencialy compute phenology, abundance index, trend and model this trend"
-    - "We learned how to interprete a trend using modelling and data vizualisation"
-    - "This tool compute phenology in order to predict missing data, no definitive conclusion can be made on the phenology using this tool"Describe your new note here."
+    - We sequencialy compute phenology, abundance index, trend and model this trend
+    - We learned how to interprete a trend using modelling and data vizualisation
+    - This tool compute phenology in order to predict missing data, no definitive conclusion can be made on the phenology using this tool"Describe your new note here.
 contributors:
     - claraurf
     - emichn
@@ -420,6 +420,9 @@ We would like to know if the year has an influence on the abundance of a species
 {: .hands_on}
 
 Have a look at the text file result. This is the output of the linear model applied in R.
+
+
+
 
 >
 > > ### {% icon question %} Questions
