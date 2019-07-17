@@ -1,0 +1,158 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "Workflow STOC population trend", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "data_FrenchBBS_squarre_dataSTOCallSp_France_trend_2001_2017_ALAARV-PARCAE_2001_2018.txt"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 10, 
+                "top": 10
+            }, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"data_FrenchBBS_squarre_dataSTOCallSp_France_trend_2001_2017_ALAARV-PARCAE_2001_2018.txt\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "1136a33b-6ede-4441-9cd1-f2b3916f1e3a", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mnhn65mo/stoc_maketable/stoceps_maketablecarrer/0.0.1", 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {
+                "input": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Preprocess population data", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 230, 
+                "top": 10
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mnhn65mo/stoc_maketable/stoceps_maketablecarrer/0.0.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "7febb46d311d", 
+                "name": "stoc_maketable", 
+                "owner": "mnhn65mo", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__page__\": null}", 
+            "tool_version": "0.0.1", 
+            "type": "tool", 
+            "uuid": "77fdbc54-43f0-460d-91f6-1b405a2fcfe4", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mnhn65mo/stoc_filteringsp/stoceps_filteringsp/0.0.1", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {
+                "input": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Filter species", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 450, 
+                "top": 10
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mnhn65mo/stoc_filteringsp/stoceps_filteringsp/0.0.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "30083899c7de", 
+                "name": "stoc_filteringsp", 
+                "owner": "mnhn65mo", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__page__\": null}", 
+            "tool_version": "0.0.1", 
+            "type": "tool", 
+            "uuid": "2559ce7e-2659-476b-9b43-e06263f31a4b", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mnhn65mo/stoc_mainglm/stoceps_glm/0.0.1", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "input": {
+                    "id": 2, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Estimate species population evolution", 
+            "outputs": [
+                {
+                    "name": "plots", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "yearly_variations", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "global_tendencies", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 670, 
+                "top": 10
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mnhn65mo/stoc_mainglm/stoceps_glm/0.0.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "701fb7866afc", 
+                "name": "stoc_mainglm", 
+                "owner": "mnhn65mo", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"input\": \"null\", \"__rerun_remap_job_id__\": null, \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\", \"settings\": \"{\\\"__current_case__\\\": 0, \\\"advanced\\\": \\\"simple\\\"}\"}", 
+            "tool_version": "0.0.1", 
+            "type": "tool", 
+            "uuid": "df5a570d-87fc-4c07-9f70-39ec5dfedb97", 
+            "workflow_outputs": []
+        }
+    }, 
+    "tags": [], 
+    "uuid": "34a13beb-103f-4724-8ac6-49d28b8f3658"
+}

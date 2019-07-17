@@ -1,0 +1,23 @@
+install_tool_dependencies: True
+install_repository_dependencies: True
+install_resolver_dependencies: True
+
+tools:
+- name: stoc_maketable
+  owner: mnhn65mo
+  revisions:
+  - 7febb46d311d
+  tool_panel_section_label: Tools from workflows
+  tool_shed_url: https://testtoolshed.g2.bx.psu.edu
+- name: stoc_filteringsp
+  owner: mnhn65mo
+  revisions:
+  - 30083899c7de
+  tool_panel_section_label: Tools from workflows
+  tool_shed_url: https://testtoolshed.g2.bx.psu.edu
+- name: stoc_mainglm
+  owner: mnhn65mo
+  revisions:
+  - 701fb7866afc
+  tool_panel_section_label: Tools from workflows
+  tool_shed_url: https://testtoolshed.g2.bx.psu.edu

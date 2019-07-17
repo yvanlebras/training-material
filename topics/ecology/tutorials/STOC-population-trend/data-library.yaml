@@ -1,0 +1,19 @@
+---
+destination:
+  type: library
+  name: GTN - Material
+  description: Galaxy Training Network Material
+  synopsis: Galaxy Training Network Material. See https://training.galaxyproject.org
+items:
+- name: The new topic
+  description: Summary
+  items:
+  - name: STOC population trend
+    items:
+    - name: 'DOI: 10.5281/zenodo.3339190'
+      description: latest
+      items:
+      - url: https://zenodo.org/api/files/c76589fb-c54b-4b3b-9642-489d15063c45/data_FrenchBBS_squarre_dataSTOCallSp_France_trend_2001_2017_ALAARV-PARCAE_2001_2018.txt
+        src: url
+        ext: txt
+        info: https://doi.org/10.5281/zenodo.3339190
