@@ -1,22 +1,23 @@
 ---
 layout: tutorial_hands_on
 
-title: STOC population trend
+title: Estimating the temporal evolution of community indicators measured with the french STOC (Suivi temporel des oiseaux communs, or temporal tracking of common birds)
+
 zenodo_link: https://doi.org/10.5281/zenodo.3339190
 questions:
 - Which biological questions are addressed by the tutorial?
 - Which bioinformatics techniques are important to know for this type of data?
 objectives:
-- The learning objectives are the goals of the tutorial
-- They will be informed by your audience and will communicate to them and to yourself
-  what you should focus on during the course
-- They are single sentences describing what a learner should be able to do once they
-  have completed the tutorial
-- You can use Bloom's Taxonomy to write effective learning objectives
-time_estimation: 3H
+- This tutorial allow to compute the indicator csi, cti and ctri per year and site, wich also correspond to community weighted means (CWM), and analyse their temporal evolution trend and create graphical vizualisation.
+
+- Estimate the temporal evolution of indicators or CWM and obtain a graphical visualization.
+- Estimate the quality of the calculation by the model.
+
+time_estimation: 1H
 key_points:
-- The take-home messages
-- They will appear at the end of the tutorial
+- As always, the calculation by the model depends on the quality of the input data. The model will be more accurate with more data.
+- Keep in mind that the conclusion of the analysis will also depends on the number of year you have in your data set. Be sure to have sufficient information on species responses to environmental changes before concludes.  
+
 contributors:
 - Byguel
 - sbenateau
@@ -29,14 +30,15 @@ contributors:
 
 <!-- This is a comment. -->
 
-General introduction about the topic and then an introduction of the
-tutorial (the questions and the objectives). It is nice also to have a
-scheme to sum up the pipeline used during the tutorial. The idea is to
-give to trainees insight into the content of the tutorial and the (theoretical
-and technical) key concepts they will learn.
+This tool compute the indicator csi, cti and ctri per year and site, wich also correspond to community weighted means (CWM), and analyse their temporal evolution trend and create graphical vizualisation.
+Csi, cti and ctri are respectively the "community specialization index", the "community thermic index", and the "community trophic index", that measured the mean habitat specialization of communities, mean thermic preference of communities, and the mean trophic level of communities.
+As indicator you can thus use also any traits, compute their CWM and analyze their temporal variation.
 
-**Please follow our
-[tutorial to learn how to fill the Markdown]({{ site.baseurl }}/topics/contributing/tutorials/create-new-tutorial-content/tutorial.html)**
+This tool allows to estimate the temporal evolution of community indicators not only of the french STOC but also of any species with a protocol producing the same kind of data.
+The protocol of the Stoc consists in estimating bird abundance from bird songs 2 sampling periods per year (between april the 9th may and between the 9th may and mid june) in a plot, a square of 2 square meter, divided in 10 clew or sampling points of 5 minutes.
+More information can be found for french speaking person at this adress: https://www.vigie-plume.fr/
+In order to analyze these data, the maximum of the abundance per species between the two samplings periods for each sampling point is taken  and summed by species, by plot and by year.
+We obtain a table with four variables, i.e. the year, the plot ID, the species name or ID, and the abundance. You can hence a priori analyze temporal trend of any data with the same structure.
 
 > ### Agenda
 >
@@ -47,21 +49,24 @@ and technical) key concepts they will learn.
 >
 {: .agenda}
 
-# Title for your first section
+# Get data
 
-Give some background about what the trainees will be doing in the section.
+<!-- In the tools list at the left side, you will find get or load data. You can also click on the green icon on the top of this tools list.
+You can upload the data file with different option, from an URL or directly from your computer. USE THE CLASSIC IMPORT TODO : SB-->
+The file of the STOC data can be extracted from the database by demand :romain.lorrilliere@mnhn.fr
+The file with the species name or ID and traits for the STOC (version 2019 and before) is already available in Galaxy. However you can upload your own trait database.
 
-Below are a series of hand-on boxes, one for each tool in your workflow file.
-Often you may wish to combine several boxes into one or make other adjustments such
-as breaking the tutorial into sections, we encourage you to make such changes as you
-see fit, this is just a starting point :)
+**IMPORTANT**: You should not have any zero in your database because this will biaised the calculation of the mean.
 
-Anywhere you find the word "***TODO***", there is something that needs to be changed
-depending on the specifics of your tutorial.
 
-have fun!
-
-## Get data
+<!-- do you have the figure linked ? TODO : BY
+![Example of the dataset]("This is the general format of the data you should upload (site in the STOC is thus called carre):")
+> | Site | Year | Species | Abund  |
+> |--------------------------------|
+> | 26776| 2001 | ALAARV  | 2      |
+> | 26778| 2001 | ALAARV  | 3      |
+> | 26778| 2002 | PARCAE  | 1      |
+{: .matrix} -->  
 
 > ### {% icon hands_on %} Hands-on: Data upload
 >
@@ -71,9 +76,6 @@ have fun!
 >    ```
 >    https://zenodo.org/api/files/c76589fb-c54b-4b3b-9642-489d15063c45/data_FrenchBBS_squarre_dataSTOCallSp_France_trend_2001_2017_ALAARV-PARCAE_2001_2018.txt
 >    ```
->    ***TODO***: *Add the files by the ones on Zenodo here (if not added)*
->
->    ***TODO***: *Remove the useless files (if added)*
 >
 >    {% include snippets/import_via_link.md %}
 >    {% include snippets/import_from_data_library.md %}
