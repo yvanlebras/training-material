@@ -99,6 +99,9 @@ blankenberg:
 bphipson:
     name: Belinda Phipson
 
+Byguel:
+    name: Benjamin Yguel
+
 cecilecanlet:
     name: Cécile Canlet
     github: false
@@ -462,7 +465,6 @@ tobyhodges:
     email: tbyhdgs@gmail.com
     twitter: tbyhdgs
     orcid: 0000-0003-1766-456X
-
 
 torhou:
     name: Torsten Houwaart
