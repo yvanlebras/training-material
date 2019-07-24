@@ -1,22 +1,21 @@
 ---
 layout: tutorial_hands_on
 
-title: Estimating the temporal evolution of community indicators measured with the french STOC (Suivi temporel des oiseaux communs, or temporal tracking of common birds)
+title: Estimating the temporal evolution of population studied in the french STOC (Suivi temporel des oiseaux communs, or temporal tracking of common birds)
 
 zenodo_link: https://doi.org/10.5281/zenodo.3339190
 questions:
-- Which biological questions are addressed by the tutorial?
-- Which bioinformatics techniques are important to know for this type of data?
+- This tutorial allow to estimate the temporal evolution of population not only of the french STOC but also of any species with a protocol producing the same kind of data.
+- None except modifying the name of your data file and the name of the column of your data file.
 objectives:
-- This tutorial allow to compute the indicator csi, cti and ctri per year and site, wich also correspond to community weighted means (CWM), and analyse their temporal evolution trend and create graphical vizualisation.
-
-- Estimate the temporal evolution of indicators or CWM and obtain a graphical visualization.
+- Estimate the temporal evolution of population and obtain a graphical visualization.
 - Estimate the quality of the calculation by the model.
 
-time_estimation: 1H
+time_estimation: 1H (depending of the size of the dataset, the 4th step could much more long)
 key_points:
 - As always, the calculation by the model depends on the quality of the input data. The model will be more accurate with more data.
-- Keep in mind that the conclusion of the analysis will also depends on the number of year you have in your data set. Be sure to have sufficient information on species responses to environmental changes before concludes.  
+- Keep in mind that the conclusion of the analysis will also depends on the number of year you have in your data set. Some species have cyclical population evolution, and your data may not cover the entire cycle. For instance, you may observe a decrease while it is only temporary. Be sure to have sufficient information on species ecology before concludes.  
+- Also, keep in mind that you need relatively large amount of data with that kind of models (generalized linear model and specification)
 
 contributors:
 - Byguel
@@ -30,15 +29,12 @@ contributors:
 
 <!-- This is a comment. -->
 
-This tool compute the indicator csi, cti and ctri per year and site, wich also correspond to community weighted means (CWM), and analyse their temporal evolution trend and create graphical vizualisation.
-Csi, cti and ctri are respectively the "community specialization index", the "community thermic index", and the "community trophic index", that measured the mean habitat specialization of communities, mean thermic preference of communities, and the mean trophic level of communities.
-As indicator you can thus use also any traits, compute their CWM and analyze their temporal variation.
-
-This tool allows to estimate the temporal evolution of community indicators not only of the french STOC but also of any species with a protocol producing the same kind of data.
-The protocol of the Stoc consists in estimating bird abundance from bird songs 2 sampling periods per year (between april the 9th may and between the 9th may and mid june) in a plot, a square of 2 square meter, divided in 10 clew or sampling points of 5 minutes.
+This workflow allow to estimate the temporal evolution of population not only of the french STOC but also of any species with a protocol producing the same kind of data.
+The protocol of the Stoc consist in estimating bird abundance from bird songs 2 sampling periods per year (between april the 9th may and between the 9th may and mid june) in a plot, a square of 2 square meter, divided in 10 clew or sampling points of 5 minutes.
 More information can be found for french speaking person at this adress: https://www.vigie-plume.fr/
-In order to analyze these data, the maximum of the abundance per species between the two samplings periods for each sampling point is taken  and summed by species, by plot and by year.
-We obtain a table with four variables, i.e. the year, the plot ID, the species name or ID, and the abundance. You can hence a priori analyze temporal trend of any data with the same structure.
+In order to analyze these data, the maximum of the abundance per species between the two samplings periods for each sampling point is taken and summed by species, by plot and by year.
+We obtain and will use a table with four variables, i.e. the year, the plot ID, the species name or ID, and the abundance. You can hence a priori analyze temporal trend of any data with the same structure.
+This table will be the starting point.
 
 > ### Agenda
 >
