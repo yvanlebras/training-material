@@ -50,19 +50,15 @@ This table will be the starting point.
 <!-- In the tools list at the left side, you will find get or load data. You can also click on the green icon on the top of this tools list.
 You can upload the data file with different option, from an URL or directly from your computer. USE THE CLASSIC IMPORT TODO : SB-->
 The file of the STOC data can be extracted from the database by demand :romain.lorrilliere@mnhn.fr
-The file with the species name or ID and traits for the STOC (version 2019 and before) is already available in Galaxy. However you can upload your own trait database.
 
-**IMPORTANT**: You should not have any zero in your database because this will biaised the calculation of the mean.
+**IMPORTANT**: the two next step may be skipped if you already have a file with zero counts and without absent and low abundance species. In that case go directly to "Analysis of temporal evolution of each species population".
 
-
-<!-- do you have the figure linked ? TODO : BY
-![Example of the dataset]("This is the general format of the data you should upload (site in the STOC is thus called carre):")
 > | Site | Year | Species | Abund  |
 > |--------------------------------|
 > | 26776| 2001 | ALAARV  | 2      |
 > | 26778| 2001 | ALAARV  | 3      |
 > | 26778| 2002 | PARCAE  | 1      |
-{: .matrix} -->  
+{: .matrix}
 
 > ### {% icon hands_on %} Hands-on: Data upload
 >
@@ -87,135 +83,79 @@ The file with the species name or ID and traits for the STOC (version 2019 and b
 >
 {: .hands_on}
 
-# Title of the section usually corresponding to a big step in the analysis
-
-It comes first a description of the step: some background and some theory.
-Some image can be added there to support the theory explanation:
-
-![Alternative text](../../images/image_name "Legend of the image")
-
-The idea is to keep the theory description before quite simple to focus more on the practical part.
-
-***TODO***: *Consider adding a detail box to expand the theory*
-
-> ### {% icon details %} More details about the theory
->
-> But to describe more details, it is possible to use the detail boxes which are expandable
->
-{: .details}
-
-A big step can have several subsections or sub steps:
+# Data pre-processing
 
 
-## Sub-step with **Preprocess population data**
+## Adding zero's
+
+Once the data are uploaded, this step consists in reshaping the data for the next steps of the STOC analyzes by adding zero count to sites that are in the dataset, for species having no count data for those sites.
+This tool also modify the shape of the table with one column for each species abundance instead of having one column for the species name and one column for the abundance, hence reducing the number of line, the plots being no more repeated for each species.
+
+> | Site | Year | ALAARV | PARCAE  | Sps name 3  |
+> |----------------------------------------------|
+> | 26776| 2001 | 2      | 0       | 0           |
+> | 26778| 2001 | 3      | 0       | 2           |
+> | 26778| 2002 | 0      | 1       | 0           |
+{: .matrix}
 
 > ### {% icon hands_on %} Hands-on: Task description
 >
 > 1. **Preprocess population data** {% icon tool %} with the following parameters:
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > ### {% icon comment %} Comment
->    >
->    > A comment about the tool or something else. This box can also be in the main text
+> Select the uploaded data
 >    {: .comment}
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
+## Filtering absent and low abundance species
 
-> ### {% icon question %} Questions
->
-> 1. Question1?
-> 2. Question2?
->
-> > ### {% icon solution %} Solution
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Filter species**
+The second step of the preprocessing consists in filtering absent species or with low abundance, i.e. species being sampled not enough number of year in order to perform the statistical analyses.
+This step also consists in reshaping the data for the next and final step of the STOC analyzes recreating one column for the species name or ID and one column with the abundance instead of one column for each species abundance.
 
 > ### {% icon hands_on %} Hands-on: Task description
 >
 > 1. **Filter species** {% icon tool %} with the following parameters:
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > ### {% icon comment %} Comment
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
+> Select the preprocessed data and click to launch the tool.
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
+You obtain one data file with one column for the year, one for the plot ID, one column for the species name or ID and one for the abundance.
 
-> ### {% icon question %} Questions
->
-> 1. Question1?
-> 2. Question2?
->
-> > ### {% icon solution %} Solution
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
+> | Site | Year | Species | Abund  |
+> |--------------------------------|
+> | 26776| 2001 | ALAARV  | 2      |
+> | 26778| 2001 | ALAARV  | 3      |
+> | 26778| 2002 | PARCAE  | 1      |
+> | 26778| 2001 | PARCAE  | 0      |
+{: .matrix}
 
-## Sub-step with **Estimate temporal population evolution**
+
+# Analysis of temporal evolution of each species
+
+This last step consists in analysis the temporal of each species by fitting two glm of that form: abundance = year + plot, with plot as factor, one model with year as a factor for graphical output, and one model with year as continuous numeric variable.
+As an option, you can choose to calculate or not the confidence interval (IC).
 
 > ### {% icon hands_on %} Hands-on: Task description
 >
 > 1. **Estimate temporal population evolution** {% icon tool %} with the following parameters:
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > ### {% icon comment %} Comment
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
+You obtain one png file per species with 3 figures, from top to bottom, one of the variation of the predicted abundance, one of occurence which is the number of the site where the species is observed in light green and the total number of site in dark green, and one with the variation of the raw abundance.
+The highest figure give an idea of the direction of the variation and should roughly match the raw data, the lowest figure. If the two figures do not roughly match, this indicates a bad fit of the model. The number indicated on the top of the figure corresponds to the slope with the IC of the slope if they are calculated.  
 
-> ### {% icon question %} Questions
->
-> 1. Question1?
-> 2. Question2?
->
-> > ### {% icon solution %} Solution
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
+If the IC are equivalent or bigger than the slope this indicate a low statistical power. If the slope is close to zero or with the addition of the IC, the interval contains zero, this indicates no population variation or not enough statistical power to say it. If calculated, the IC on the figure give an idea of the strength of the analysis i.e. the more the IC are great on the figure and the less the strength of the analysis is important.
+<!--
+![Alternative text](../../images/image_name "Graphical output of the temporal analysis of population evolution")
+-->
 
+You also obtain two files with the statistical output of the model with annual variation analysis and the model with the analysis on the whole period. The estimate (or trends in the table) corresponds to the regression coefficients of the relationship, a positive value indicates an increase while a negative value indicates a decrease.
+These two files contains information on model fit allowing to evaluate the strength of the analysis (with the standard error for instance) and the goodness of fit of the model (via the R� for instance).
 
-## Re-arrange
-
-To create the template, each step of the workflow had its own subsection.
-
-***TODO***: *Re-arrange the generated subsections into sections or other subsections.
-Consider merging some hands-on boxes to have a meaningful flow of the analyses*
+<!--
+![Alternative text](../../images/image_name "Numerical output of the tamporal analysis of population evolution")
+-->
 
 # Conclusion
 {:.no_toc}
 
-Sum up the tutorial and the key takeaways here. We encourage adding an overview image of the
-pipeline used.
+You know now how to compute temporal population evolution
