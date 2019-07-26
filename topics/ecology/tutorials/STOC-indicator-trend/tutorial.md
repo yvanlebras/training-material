@@ -107,32 +107,33 @@ The GAM is more precise but more time consuming as the calculation algorythm is 
 
 The smooth plot if choosen, came from predicted value from this simplier model: indic = s(year),random= 1|id_plot,autocorrelation=year
 
-As another option, you can choose to calculate or not the confidence interval (IC).
+As another option, you can choose to calculate or not the confidence interval (CI).
 
 > ### {% icon hands_on %} Hands-on: Task description
 >
 > 1. **Temporal trend indicator** {% icon tool %} with the following parameters:
+>    - {% icon param-file %} *"Stoc filtered input"*: Uploaded dataset file {% icon tool %}
 >    - *"Specify advanced parameters"*: `Yes, see full parameter list.`
+>    - *"Smooth visualisation."*: Yes
+>    - *"Chose the model method"*: GlmmTMB
 >
 {: .hands_on}
-
-
 
 ## Output files
 With the GAM or GLMM option, you obtain 1 png file which is a figure of the variation of the predicted indicator from the model with year as factor variable and 2 tables with the statistical output of the model with annual variation analysis and the model with the analysis on the whole period.
 With the smooth and the GAM option, you obtain one more file for the smoothed plot, and one more file with the simulated data to make the figure.
 The figures give an idea of the direction of the variation.
 
-![Alternative text](../../images/image_name "Graphical output of the temporal analysis of indicator evolution")
+<!-- ![Alternative text](../../images/image_name "Graphical output of the temporal analysis of indicator evolution") -->
 
-The tables contain the slope with IC of the slope if they are calculated. If the IC are equivalent or bigger than the slope this indicate a low statistical power. If the slope is close to zero or with the addition of the IC, the interval contains zero, this indicates no variation or not enough statistical power to say it. If calculated, the IC on the figure give an idea of the strength of the analysis i.e. the more the IC are great on the figure and the less the strength of the analysis is important.
+The tables contain the slope with CI of the slope if they are calculated. If the CI are equivalent or bigger than the slope this indicate a low statistical power. If the slope is close to zero or with the addition of the CI, the interval contains zero, this indicates no variation or not enough statistical power to say it. If calculated, the CI on the figure give an idea of the strength of the analysis i.e. the more the CI are great on the figure and the less the strength of the analysis is important.
 The estimate (or coef) corresponds to the regression coefficients of the relationship, a positive value indicates an increase while a negative value indicates a decrease.  
 The two tables contains information on model fit allowing to evaluate the strength of the analysis (with the standard error for instance) and the goodness of fit of the model (via the R� for instance).
 
-![Alternative text](../../images/image_name "Numerical output of the tamporal analysis of indicator evolution")
+<!-- ![Alternative text](../../images/image_name "Numerical output of the tamporal analysis of indicator evolution") -->
 
 
 # Conclusion
 {:.no_toc}
 
-You know now how to compute temporal population evolution
+You know now how to compute temporal indicator evolution
