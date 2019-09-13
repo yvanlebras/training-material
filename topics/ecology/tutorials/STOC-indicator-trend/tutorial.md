@@ -25,12 +25,12 @@ contributors:
 
 <!-- This is a comment. -->
 
-This tool compute the indicator csi, cti and ctri per year and site, wich also correspond to community weighted means (CWM), and analyse their temporal evolution trend and create graphical vizualisation.
+In this tutorial, we will compute the indicator csi, cti and ctri per year and site, wich also correspond to community weighted means (CWM), and analyse their temporal evolution trend and create graphical vizualisation.
 Csi, cti and ctri are respectively the "community specialization index", the "community thermic index", and the "community trophic index", that measured the mean habitat specialization of communities, mean thermic preference of communities, and the mean trophic level of communities.
 As indicator you can thus use also any traits, compute their CWM and analyze their temporal variation.
 
-This tool allows to estimate the temporal evolution of community indicators not only of the french STOC but also of any species with a protocol producing the same kind of data.
-The protocol of the Stoc consists in estimating bird abundance from bird songs 2 sampling periods per year (between april the 9th may and between the 9th may and mid june) in a plot, a square of 2 square meter, divided in 10 clew or sampling points of 5 minutes.
+These computation allow to estimate the temporal evolution of community indicators not only of the french STOC but also of any species with a protocol producing the same kind of data.
+The protocol of the STOC consists in estimating bird abundance from bird songs 2 sampling periods per year (between april the 9th may and between the 9th may and mid june) in a plot, a square of 2 square meter, divided in 10 clew or sampling points of 5 minutes.
 More information can be found for french speaking person at this adress: https://www.vigie-plume.fr/
 In order to analyze these data, the maximum of the abundance per species between the two samplings periods for each sampling point is taken  and summed by species, by plot and by year.
 We obtain a table with four variables, i.e. the year, the plot ID, the species name or ID, and the abundance. You can hence a priori analyze temporal trend of any data with the same structure.
