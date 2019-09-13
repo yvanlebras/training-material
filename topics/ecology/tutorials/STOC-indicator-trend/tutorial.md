@@ -26,7 +26,7 @@ contributors:
 <!-- This is a comment. -->
 
 In this tutorial, we will compute the indicator csi, cti and ctri per year and site, wich also correspond to community weighted means (CWM), and analyse their temporal evolution trend and create graphical vizualisation.
-Csi, cti and ctri are respectively the "community specialization index", the "community thermic index", and the "community trophic index", that measured the mean habitat specialization of communities, mean thermic preference of communities, and the mean trophic level of communities.
+Csi, cti and ctri are respectively the "community specialization index", the "community thermal index", and the "community trophic index", that measured the mean habitat specialization of communities, mean thermic preference of communities, and the mean trophic level of communities.
 As indicator you can thus use also any traits, compute their CWM and analyze their temporal variation.
 
 These computation allow to estimate the temporal evolution of community indicators not only of the french STOC but also of any species with a protocol producing the same kind of data.
