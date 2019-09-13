@@ -60,7 +60,7 @@ have fun!
 
 ## Get data
 
-The file of the STOC data can be extracted from the database by demand :romain.lorrilliere@mnhn.fr
+The file of the STOC data can be extracted from the database by demand: romain.lorrilliere@mnhn.fr
 The file with the species name or ID and traits for the STOC (version 2019 and before) is already available in Galaxy. However you can upload your own trait database.
 
 **IMPORTANT**: You should not have any zero in your database because this will biaised the calculation of the mean.
