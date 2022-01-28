@@ -79,8 +79,7 @@ and more precisely PM2.5 ([Particle Matter < 2.5 μm](https://en.wikipedia.org/w
 
 > ### {% icon hands_on %} Hands-on: Data upload
 >
-> 1. Create a new history for this tutorial
-> 2. Import the files from [Zenodo]({{ page.zenodo_link }}) or from
+> 1. Import the files from [Zenodo]({{ page.zenodo_link }}) or from
 >    the shared data library (`GTN - Material` -> `{{ page.topic_name }}`
 >     -> `{{ page.title }}`):
 >
@@ -93,12 +92,12 @@ and more precisely PM2.5 ([Particle Matter < 2.5 μm](https://en.wikipedia.org/w
 >
 >    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
 >
-> 3. If needed rename the datasets to `CAMS-PM2_5-20211222.netcdf`
-> 4. Check that the datatype is `netcdf`
+> 2. If needed rename the datasets to `CAMS-PM2_5-20211222.netcdf`
+> 3. Check that the datatype is `netcdf`
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
 >
-> 5. Add a tag corresponding to ads (for Atmosphere Data Service)
+> 4. Add a tag corresponding to ads (for Atmosphere Data Service)
 >
 >    {% snippet faqs/galaxy/datasets_add_tag.md %}
 >
