@@ -2523,6 +2523,11 @@
         ],
         "inexact": [
           {
+            "url": "https://galaxy.mesocentre.uca.fr",
+            "name": "Galaxy@AuBi",
+            "usegalaxy": "false"
+          },
+          {
             "url": "https://galaxy.genouest.org",
             "name": "Galaxy@GenOuest",
             "usegalaxy": "false"
@@ -4286,6 +4291,11 @@
             "name": "Center for Phage Technology (CPT)"
           },
           {
+            "url": "https://galaxy.mesocentre.uca.fr",
+            "name": "Galaxy@AuBi",
+            "usegalaxy": "false"
+          },
+          {
             "url": "https://galaxytrakr.org/",
             "name": "GalaxyTrakr",
             "usegalaxy": "false"
@@ -4445,6 +4455,11 @@
           }
         ],
         "inexact": [
+          {
+            "url": "https://galaxy.mesocentre.uca.fr",
+            "name": "Galaxy@AuBi",
+            "usegalaxy": "false"
+          },
           {
             "url": "https://galaxytrakr.org/",
             "name": "GalaxyTrakr",
