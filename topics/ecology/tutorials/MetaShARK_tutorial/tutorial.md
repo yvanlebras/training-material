@@ -28,6 +28,7 @@ tags:
   - Data Paper
 contributions:
     authorship:
+        - ThibaudGlinez
         - yvanlebras
     editing:
         - yvanlebras
