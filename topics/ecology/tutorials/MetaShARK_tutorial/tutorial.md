@@ -1,6 +1,6 @@
 ---
 layout: tutorial_hands_on
-
+ 
 title: Creating metadata using Ecological Metadata Language (EML) standard
   with EML Assembly Line functionalities
 zenodo_link: https://zenodo.org/records/10663465
