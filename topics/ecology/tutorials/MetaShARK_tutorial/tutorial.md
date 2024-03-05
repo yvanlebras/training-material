@@ -55,7 +55,8 @@ contributions:
 
 # 1] How can EML Assembly Line functionalities help producing rich metadata easily?
 
-<p align="justify"> A major gap when a researcher is writing metadata documents is the fact that metadata international <b>standards often use formats not really human readable</b> and/or editable as XML or JSON. To answer this issue, <b>[Environmental Data Initiative](https://edirepository.org/) (EDI)</b> through the <b>EML Assembly Line R package</b> propose to generate intermediate metadata template files using classical tabular text format.
+<p align="justify"> A major gap when a researcher is writing metadata documents is the fact that metadata international <b>standards often use formats not really human readable</b> and/or editable as XML or JSON. To answer this issue, <b><a href="https://edirepository.org/">Environmental Data Initiative</a>
+(EDI)</b> through the <b>EML Assembly Line R package</b> propose to generate intermediate metadata template files using classical tabular text format.
 Another major issue regarding <b>metadata fill in</b>, is the fact that one <b>need to take a lot of time to write</b>, and often rewrite, metadata elements who can be already filled using automatic inferences or use of webservices. Here again, Environmental Data Initiaitve (EDI) through the <b>EML Assembly Line R</b> package propose to <b>generate automatically information</b> related to data attributes, geographic coverage, taxonomic coverage, using the content of provided datafiles.
 <br><br>
 Finally, through the <b>MetaShARK R Shiny app</b> created by the french biodiversity data hub research infrastructure (Pôle national de données de Biodiversité (<b>PNDB</b>)), user can <b>use <b>MetaShark</b>, a graphical user interface to apply the EML Assembly Line workflow</b> and benefit from some additionnal functionnalities as:</p>
@@ -67,7 +68,7 @@ Finally, through the <b>MetaShARK R Shiny app</b> created by the french biodiver
 <br>
 
 > <comment-title>What is a **Data Paper**?</comment-title>
-> <p align="justify"> According to the [GBIF](https://www.gbif.org/data-papers) (Global Biodiversity Information Facility), 
+> <p align="justify"> According to the <a href="https://www.gbif.org/data-papers">GBIF</a> (Global Biodiversity Information Facility), 
 > A data paper is a peer reviewed document describing a dataset, published in a peer reviewed journal. It takes effort to prepare, curate and describe data. 
 > Data papers provide recognition for this effort by means of a scholarly article.</p>
 {: .comment}
@@ -110,7 +111,7 @@ To start creating metadata, you need to reach the **Fill in EML** module, then s
 
 <img src="./Images/3_MetaShARK_create.png" width=100%>
 
-Then you can upload datafiles. Here, you can import these files from the downloaded Zenodo archive (link : https://zenodo.org/api/records/10663465/files-archive):
+<p align="justify">Then you can upload datafiles. Here, you can import these files from the downloaded <a href="https://zenodo.org/api/records/10663465/files-archive">Zenodo archive</a>:</p>
 
 📁 List of datasets : 
  - datafile_1.**tsv**
@@ -169,7 +170,14 @@ Then you can add final elements as:
 > **You can add [semantic annotations](https://eml.ecoinformatics.org/semantic-annotation-primer)!**
 > 
 >  
-> <p align="justify"> To do so, you need to reach the MetaShARK parameters (upper right icon) then enter your CEDAR token. To create a CEDAR account, you can 1/ register here http://cedar.metadatacenter.org/ then 2/ go on the "profile" on http://cedar.metadatacenter.org/ and there 3/ you can find the API key.</p>
+> <p align="justify"> To do so, you need to reach the MetaShARK parameters (upper right icon) then enter your CEDAR token. To create a CEDAR account, you can:
+>  <br><br>
+>  1/ register <a href="http://cedar.metadatacenter.org/">here</a> 
+>  <br><br>
+>  2/ go on the "profile" on <a href="http://cedar.metadatacenter.org/">http://cedar.metadatacenter.org/</a>  
+>  <br><br>
+>  3/ you can find the API key
+>  </p>
 > 
 >  API key format to enter is something like: 
 > ```
@@ -270,10 +278,6 @@ Acessible, Interoperable, Reusable) on a 100 point scale.
 
 ![FAIR scores](./Images/Fairscore_tab.png "Overall FAIR score")
 
-<hr>
-Image un peu laide, je l'a modifierai un peu sur Paint pour optimiser sa taille vis à vis du vide/blanc occupé par certaines parties
-<hr>
-
 > <comment-title>TIP</comment-title>
 > **How you can improve your FAIR score?** 
 > 
@@ -281,7 +285,6 @@ Image un peu laide, je l'a modifierai un peu sur Paint pour optimiser sa taille 
 > status lines  are related to an abstract content too short and an attribute definition too small.
 > 
 > ![Warning status lines](./Images/WARNING.png "Overall FAIR score") 
-{: .comment}
 
 > <comment-title>NOTE</comment-title>
 > **Update metadata content to elevate FAIR score**
@@ -298,7 +301,7 @@ Image un peu laide, je l'a modifierai un peu sur Paint pour optimiser sa taille 
 >
 > 5. You can recreate an EML metadata file with [**Make EML**](https://ecology.usegalaxy.eu/root?tool_id=toolshed.g2.bx.psu.edu/repos/ecology/makeeml/makeeml/0.1.1+galaxy1) EAL tool and then redeploy a metashrimps tool on the new EML.
 >
-{: .comment}
+
 
 # 7] Conclusion
 
