@@ -15,9 +15,13 @@ time_estimation: 0H45
 key_points:
 - OpenRefine is a powerfull tool, with many functionnalities to check, clean and enrich your data
 contributors:
-- yvanlebras
-- sophiepamerlon
-- gbiftraining
+    authorship:
+        - yvanlebras
+        - sophiepamerlon
+        - gbiftraining
+    funding:
+        - pndb
+
 
 ---
 
@@ -29,7 +33,7 @@ contributors:
 
 In this tutorial we will use OpenRefine tool to clean occurence records retrieved from GBIF.
 
-This tutorial is based on the GBIF {% cite gbiftuto2021 %} "Biodiversity data mobilization course" accessible here https://docs.gbif.org/course-data-mobilization/en/ on Use case 1 "Herbarium Specimens"https://docs.gbif.org/course-data-mobilization/en/exercise-3a-c.html.
+This tutorial is based on the GBIF {% cite gbiftuto2021 %} "Biodiversity data mobilization course" accessible [here](https://docs.gbif.org/course-data-mobilization/en/) on Use case 1 ["Herbarium Specimens"](https://docs.gbif.org/course-data-mobilization/en/exercise-3a-c.html).
 
 > ### Agenda
 >
@@ -44,17 +48,20 @@ This tutorial is based on the GBIF {% cite gbiftuto2021 %} "Biodiversity data mo
 >
 {: .agenda}
 
-# Retrive data from GBIF
+# Retrieve data from GBIF "Biodiversity data mobilization course"
 
 ## Get data
 
 > ### {% icon hands_on %} Hands-on: Data import and project creation
 >
 > 1. Create a new history for this tutorial, you can for example name it "OpenRefine tutorial"
-> 2. Deploy an OpenRefine instance clicking Execute on the OpenRefine tool https://ecology.usegalaxy.eu/root?tool_id=interactive_tool_openrefine without specifying any input dataset for now
-> 3. Import content of the file directly on OpenRefine using "Clipboard" on "Create Project" space. Open the file locally, with notepad++ or any other software allowing reading raw content of text files, and then copy the content, and paste it on the "OpenRefine Clipboard" dedicated space.
-> 4. You can then edit input content parsing options (here noting to change normaly as averything is automagically detected), specify a project name (for example "GBIF tutorial"),  and finally click "Create project". openrefine_parsinginput.PNG
-> 5. You will now have your project with first 10 lines of your file displayed openrefine_start.PNG
+> {% snippet faqs/galaxy/histories_create_new.md %}
+> 3. Deploy an OpenRefine instance clicking Execute on the {% tool [OpenRefine tool](interactive_tool_openrefine) %}  without specifying any input dataset for now
+> 4. Import content of the file directly on OpenRefine using "Clipboard" on "Create Project" space. Open the file locally, with notepad++ or any other software allowing reading raw content of text files, and then copy the content, and paste it on the "OpenRefine Clipboard" dedicated space.
+> 5. You can then edit input content parsing options (here noting to change normaly as averything is automagically detected), specify a project name (for example "GBIF tutorial"),  and finally click "Create project".
+![Openrefine parsing options](../../images/openrefine/openrefine_parsinginput.PNG)
+> 7. You will now have your project with first 10 lines of your file displayed
+![Openrefine project start](../../images/openrefine/openrefine_start.PNG)
 {: .hands_on}
 
 
@@ -68,7 +75,7 @@ kind of text, numbers and dates.
 >
 > 1. Go to column "kingdom", and then click on the column menu and follow the route to `Text facet`.
 >    - On the left a window with the name of the column will appear, that is the facet.
-openrefine_facet_kingdom.PNG
+![Openrefine facet kingdom](../../images/openrefine/openrefine_facet_kingdom.PNG)
 > 2. Click on count to sort by count, then click on name to sort alphabetically
 > 3. Fix the spelling mistakes (Plante -> Plantae). Place the cursor over the text in the window and click on `edit`, then fix the error in the text box, and to save click on apply.
 >    - All the values will be fixed automatically.
